@@ -22,13 +22,15 @@
       <li><a href="#five-cs">5 C's</a></li>
       <li><a href="#metrics">Metrics</a></li>
       <li><a href="#models">Models</a></li>
-      <li><a href="#scorecard">Scorecard Dev</a></li>
+      <li><a href="#scorecard">Scorecard</a></li>
       <li><a href="#lifecycle">Lifecycle</a></li>
-      <li><a href="#portfolio">Portfolio Mgmt</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#collections">Collections</a></li>
-      <li><a href="#stress">Stress Testing</a></li>
+      <li><a href="#stress">Stress</a></li>
+      <li><a href="#ews">EWS</a></li>
       <li><a href="#regulation">Regulation</a></li>
       <li><a href="#advanced">Advanced</a></li>
+      <li><a href="#cases">Case Studies</a></li>
       <li><a href="#glossary">Glossary</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle">&#9776;</button>
@@ -42,7 +44,7 @@
     <h1 class="hero-title">Retail<br><em>Credit Risk</em></h1>
     <p class="hero-sub">A comprehensive knowledge base spanning foundational concepts through advanced modeling techniques used across US consumer lending.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><span class="stat-num">12</span><span class="stat-label">Core Sections</span></div>
+      <div class="hero-stat"><span class="stat-num">14</span><span class="stat-label">Core Sections</span></div>
       <div class="hero-stat"><span class="stat-num">100+</span><span class="stat-label">Key Concepts</span></div>
       <div class="hero-stat"><span class="stat-num">$1.7T</span><span class="stat-label">US Credit Card Market</span></div>
     </div>
@@ -947,11 +949,164 @@ flowchart LR
   </div>
 </section>
 
-<!-- 10: REGULATION -->
-<section class="section section-alt" id="regulation">
+<!-- 10: EARLY WARNING SIGNS -->
+<section class="section section-alt" id="ews">
   <div class="container">
     <div class="section-header">
       <span class="section-tag">10</span>
+      <h2>Early Warning Signs (EWS / EWI)</h2>
+      <p>Identifying Early Warning Indicators is one of the most critical responsibilities in credit risk. The goal is to detect deterioration <em>before</em> default or Stage 3 migration — enabling proactive intervention.</p>
+    </div>
+
+    <div class="ews-bfume">
+      <div class="bfume-title">The B-FUME Framework</div>
+      <div class="bfume-grid">
+        <div class="bfume-card bfume-b">
+          <div class="bfume-letter">B</div>
+          <div class="bfume-name">Behavioral</div>
+          <p>Repayment behavior changes — DPD increases, missed/partial payments, payment pattern shifts</p>
+        </div>
+        <div class="bfume-card bfume-f">
+          <div class="bfume-letter">F</div>
+          <div class="bfume-name">Financial</div>
+          <p>Borrower financial health — income decline, rising DTI, leverage increase, cash flow stress</p>
+        </div>
+        <div class="bfume-card bfume-u">
+          <div class="bfume-letter">U</div>
+          <div class="bfume-name">Utilization</div>
+          <p>Credit usage patterns — sudden utilization spike above 80%, balance cycling, cash advance usage</p>
+        </div>
+        <div class="bfume-card bfume-m">
+          <div class="bfume-letter">M</div>
+          <div class="bfume-name">Model-based</div>
+          <p>PD/rating changes — PD increase &gt;50%, rating downgrade, behavioral score deterioration</p>
+        </div>
+        <div class="bfume-card bfume-e">
+          <div class="bfume-letter">E</div>
+          <div class="bfume-name">External</div>
+          <p>Macro &amp; bureau signals — credit score drop &gt;50 points, industry stress, bureau inquiry spikes</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">EWI Signal Table</h3>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Category</th><th>Early Warning Signal</th><th>Why It Matters</th><th>Risk Interpretation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="ews-badge ews-behav">Behavioral</span></td><td>Increase in Days Past Due (DPD &gt;30)</td><td>First sign of repayment stress</td><td>Strong SICR signal → Stage 2 trigger</td></tr>
+            <tr><td><span class="ews-badge ews-behav">Behavioral</span></td><td>Missed or partial payments</td><td>Liquidity issues emerging</td><td>Cash flow stress, watch closely</td></tr>
+            <tr><td><span class="ews-badge ews-util">Utilization</span></td><td>Sudden spike in utilization &gt;80%</td><td>Borrower relying heavily on credit</td><td>Liquidity pressure, potential pre-default</td></tr>
+            <tr><td><span class="ews-badge ews-fin">Financial</span></td><td>Decline in income / cash flow &gt;30%</td><td>Reduced repayment capacity</td><td>Increased default risk, DTI review needed</td></tr>
+            <tr><td><span class="ews-badge ews-fin">Financial</span></td><td>Increase in leverage (DTI &gt;50%)</td><td>Over-indebtedness</td><td>High structural risk, consider limit action</td></tr>
+            <tr><td><span class="ews-badge ews-ext">External</span></td><td>Credit score drop &gt;50 points</td><td>Deterioration across lenders</td><td>System-wide risk signal, Stage 2 review</td></tr>
+            <tr><td><span class="ews-badge ews-ext">External</span></td><td>Industry stress (e.g. real estate downturn)</td><td>Sector-wide default risk</td><td>Portfolio-level concentration warning</td></tr>
+            <tr><td><span class="ews-badge ews-model">Model-based</span></td><td>PD increase &gt;50% over prior period</td><td>Model detects higher default risk</td><td>Quantitative SICR signal under IFRS 9</td></tr>
+            <tr><td><span class="ews-badge ews-model">Model-based</span></td><td>Internal rating downgrade</td><td>Formal credit quality deterioration</td><td>Governance-triggered EWI, committee review</td></tr>
+            <tr><td><span class="ews-badge ews-exp">Exposure</span></td><td>Rapid EAD growth &gt;50% over 6 months</td><td>Aggressive borrowing behavior</td><td>Potential risk build-up, draw-down risk</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">EWI Composite Score &amp; SQL Logic</h3>
+      <div class="card-grid-2">
+        <div class="card">
+          <h4>Composite EWI Score</h4>
+          <p>Aggregate individual signals into a single watchlist score. Each trigger adds 1 point; total drives escalation action.</p>
+          <div class="code-block">SELECT
+    customer_id,
+    (CASE WHEN dpd > 30 THEN 1 ELSE 0 END) +
+    (CASE WHEN utilization_ratio > 0.8 THEN 1 ELSE 0 END) +
+    (CASE WHEN pd_current > pd_prev * 1.5 THEN 1 ELSE 0 END) +
+    (CASE WHEN score_drop > 50 THEN 1 ELSE 0 END) +
+    (CASE WHEN dti_ratio > 0.5 THEN 1 ELSE 0 END)
+    AS ewi_score
+FROM credit_portfolio;</div>
+          <div class="ews-score-table">
+            <div class="ews-score-row ews-stable"><span class="ews-score-val">0</span><span class="ews-score-label">Stable — no action</span></div>
+            <div class="ews-score-row ews-watch"><span class="ews-score-val">1–2</span><span class="ews-score-label">Watchlist — monitor monthly</span></div>
+            <div class="ews-score-row ews-escalate"><span class="ews-score-val">3+</span><span class="ews-score-label">High Risk — escalate, limit action</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h4>Individual Signal Queries</h4>
+          <p>Operationalize each EWI signal as a standalone SQL trigger for portfolio monitoring dashboards.</p>
+          <div class="code-block">-- Behavioral: DPD increase
+SELECT customer_id FROM loans
+WHERE dpd > 30;
+
+-- Utilization spike
+SELECT customer_id FROM accounts
+WHERE utilization_ratio > 0.8;
+
+-- PD deterioration (model-based)
+SELECT customer_id FROM risk_models
+WHERE pd_current > pd_previous * 1.5;
+
+-- Bureau score drop
+SELECT customer_id FROM bureau_refresh
+WHERE score_drop > 50;
+
+-- DTI breach
+SELECT customer_id FROM customers
+WHERE dti_ratio > 0.5;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">EWI Link to IFRS 9 / CECL Staging</h3>
+      <div class="ews-staging">
+        <div class="ews-stage ews-stage1">
+          <div class="ews-stage-label">Stage 1 — Performing</div>
+          <div class="ews-stage-ecl">12-month ECL</div>
+          <ul>
+            <li>No active EWI triggers</li>
+            <li>EWI score = 0</li>
+            <li>PD stable or improving</li>
+            <li>Current on all payments</li>
+          </ul>
+        </div>
+        <div class="ews-stage-arrow">&rarr;</div>
+        <div class="ews-stage ews-stage2">
+          <div class="ews-stage-label">Stage 2 — SICR</div>
+          <div class="ews-stage-ecl">Lifetime ECL</div>
+          <ul>
+            <li>EWI score 1–2 (mild triggers)</li>
+            <li>PD increased &gt;50% (relative)</li>
+            <li>DPD 30–89 or behavioral deterioration</li>
+            <li>Credit score drop &gt;50 pts</li>
+          </ul>
+        </div>
+        <div class="ews-stage-arrow">&rarr;</div>
+        <div class="ews-stage ews-stage3">
+          <div class="ews-stage-label">Stage 3 — Credit Impaired</div>
+          <div class="ews-stage-ecl">Lifetime ECL (net of collateral)</div>
+          <ul>
+            <li>EWI score 3+ (severe)</li>
+            <li>DPD &gt; 90 (objective default)</li>
+            <li>Bankruptcy / restructuring</li>
+            <li>Distressed restructuring</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:1.5rem">
+        <strong>Second Line Validation Questions:</strong> Are EWIs predictive of actual defaults? Are we missing hidden risk segments? Are thresholds calibrated correctly — too loose or too strict? Are EWI triggers aligned with IFRS 9 SICR definitions and documented in the model inventory?
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11: REGULATION -->
+<section class="section section-alt" id="regulation">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">11</span>
       <h2>US Regulatory Framework</h2>
       <p>Retail credit is among the most heavily regulated financial activities. Compliance failures carry legal, reputational, and financial consequences.</p>
     </div>
@@ -980,7 +1135,7 @@ flowchart LR
 <section class="section" id="advanced">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">11</span>
+      <span class="section-tag">12</span>
       <h2>Advanced Concepts</h2>
       <p>Sophisticated techniques used by large financial institutions, regulators, and quantitative teams in model development and portfolio analytics.</p>
     </div>
@@ -1070,11 +1225,405 @@ flowchart LR
   </div>
 </section>
 
-<!-- 07: GLOSSARY -->
+<!-- 13: CASE STUDIES -->
+<section class="section" id="cases">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">13</span>
+      <h2>Case Studies &amp; Scenarios</h2>
+      <p>Real-world credit risk scenarios structured for analytical thinking, interview preparation, and portfolio demonstration. Each case includes a structured answer framework and decision logic.</p>
+    </div>
+
+    <div class="cases-accordion" id="casesAccordion">
+
+      <!-- CASE 1: NEW UNDERWRITING MODEL ROLLOUT -->
+      <div class="case-item">
+        <button class="case-btn" aria-expanded="false">
+          <div class="case-btn-inner">
+            <span class="case-tag case-tag-model">Model Risk</span>
+            <span class="case-title">New Underwriting Model Rollout</span>
+            <span class="case-difficulty diff-hard">Advanced</span>
+          </div>
+        </button>
+        <div class="case-body">
+          <div class="case-scenario">
+            <strong>Scenario:</strong> A company is rolling out a new underwriting model to improve credit decisions. Evaluate whether to deploy it and design the rollout strategy.
+          </div>
+
+          <div class="case-framework">
+            <div class="cf-title">Mental Framework: Understand → Segment → Quantify → Trade-offs → Test → Rollout → Monitor</div>
+          </div>
+
+          <div class="card-grid-2" style="margin-bottom:1.5rem">
+            <div class="info-box">
+              <strong>7 Evaluation Dimensions</strong>
+              <ul>
+                <li><strong>Model Performance</strong> — AUC, Gini, lift vs. existing model</li>
+                <li><strong>Approval Rate Impact</strong> — Which segments gain/lose approvals?</li>
+                <li><strong>Risk / Default Rate</strong> — Does NCO improve or worsen?</li>
+                <li><strong>Revenue Impact</strong> — Interest + fee income per approved account</li>
+                <li><strong>Customer Impact</strong> — False negative rate (good customers rejected)</li>
+                <li><strong>Regulatory / Fair Lending</strong> — ECOA disparate impact, SHAP explainability</li>
+                <li><strong>Operational</strong> — Real-time latency, system integration readiness</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <strong>Core Financial Logic</strong>
+              <div class="code-block small">Profit =
+  (Approvals × Revenue per customer)
+  − (Defaults × Loss Given Default)
+  − Operational Cost
+
+Key Comparison Metrics:
+  Approval Rate:  Old 60%  →  New 55–65%
+  Default Rate:   Old 5.0% →  New 3.0%
+  Revenue/Acct:   Old $X   →  New $Y
+  Net Profit:     Old $A   →  New $B</div>
+            </div>
+          </div>
+
+          <div class="case-tradeoffs">
+            <div class="tradeoff-title">Key Trade-offs</div>
+            <div class="card-grid-3">
+              <div class="tradeoff-item to-risk">
+                <div class="to-name">Risk vs Growth</div>
+                <p>Higher approvals → more revenue but higher defaults. Lower approvals → safer but lost growth opportunity.</p>
+              </div>
+              <div class="tradeoff-item to-model">
+                <div class="to-name">Precision vs Recall</div>
+                <p>Too strict → reject good customers (lost revenue). Too lenient → approve risky customers (higher losses).</p>
+              </div>
+              <div class="tradeoff-item to-time">
+                <div class="to-name">Short-term vs Long-term</div>
+                <p>Initial approval rate drop may improve long-term portfolio quality and NCO rate over 12–24 months.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-rollout">
+            <div class="rollout-title">Phased Rollout Strategy</div>
+            <div class="rollout-steps">
+              <div class="rs-step rs-blue"><div class="rs-num">1</div><div><strong>Shadow Testing</strong><p>Run new model in parallel — no impact on decisions. Compare score distributions, approval rates, and risk profiles.</p></div></div>
+              <div class="rs-arrow">&darr;</div>
+              <div class="rs-step rs-amber"><div class="rs-num">2</div><div><strong>A/B Testing</strong><p>Split population (50/50 or 80/20). Measure real-world default rates, approval rates, and profit per account after 3–6 months.</p></div></div>
+              <div class="rs-arrow">&darr;</div>
+              <div class="rs-step rs-green"><div class="rs-num">3</div><div><strong>Gradual Rollout</strong><p>Deploy first to low-risk, prime segments. Monitor for 60–90 days. Expand to full population if performance targets met.</p></div></div>
+            </div>
+          </div>
+
+          <div class="mermaid-card" style="margin-top:1.5rem">
+            <div class="mermaid-title">New Underwriting Model Rollout — Decision Flow</div>
+            <div class="mermaid">
+flowchart TD
+    A["New Underwriting Model Rollout"] --> B["Define Objective: Risk-adjusted Profit"]
+    B --> C["Evaluate 7 Dimensions"]
+    C --> D["Model Performance<br>AUC / Gini / Lift"]
+    C --> E["Approval Rate Impact"]
+    C --> F["Risk / Default Rate"]
+    C --> G["Revenue per Account"]
+    C --> H["Customer Impact"]
+    C --> I["Regulatory / Fair Lending"]
+    C --> J["Operational Readiness"]
+    D --> K["Quantify Financial Impact"]
+    E --> K
+    F --> K
+    G --> K
+    K --> L["Profit = Approvals x Revenue<br>minus Defaults x LGD minus Costs"]
+    L --> M["Identify Trade-offs"]
+    M --> N["Risk vs Growth"]
+    M --> O["Precision vs Recall"]
+    M --> P["Short vs Long-term"]
+    N --> Q["Rollout Strategy"]
+    O --> Q
+    P --> Q
+    Q --> R["Phase 1: Shadow Testing"]
+    Q --> S["Phase 2: A/B Testing"]
+    Q --> T["Phase 3: Gradual Rollout"]
+    R --> U["Monitor: Default rate, Approvals, Profit"]
+    S --> U
+    T --> U
+    U --> V["Deploy if: Profit UP + Default DOWN + No Bias"]
+    style A fill:#E3F2FD,stroke:#1E88E5,color:#000
+    style B fill:#E8F5E9,stroke:#43A047,color:#000
+    style L fill:#FFF3E0,stroke:#EF6C00,color:#000
+    style V fill:#C8E6C9,stroke:#1B5E20,color:#000
+    style Q fill:#E8F5E9,stroke:#2E7D32,color:#000
+            </div>
+          </div>
+
+          <div class="case-answer">
+            <div class="ca-title">30-Second Interview Answer</div>
+            <p>"I'd structure this around risk-adjusted profitability trade-offs. First, compare the old and new models on approval rates and default rates to estimate profit per account. Then segment customers to see where the model improves or hurts outcomes. I'd recommend a phased rollout — shadow testing, then A/B testing, then gradual deployment — while monitoring defaults, approvals, and regulatory compliance. Deploy only if it demonstrates higher risk-adjusted profit with no fair lending concerns."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE 2: EWS SECOND LINE CHALLENGE -->
+      <div class="case-item">
+        <button class="case-btn" aria-expanded="false">
+          <div class="case-btn-inner">
+            <span class="case-tag case-tag-ews">EWS / IFRS 9</span>
+            <span class="case-title">Portfolio Deterioration — EWI Detection &amp; IFRS 9 Staging</span>
+            <span class="case-difficulty diff-mid">Intermediate</span>
+          </div>
+        </button>
+        <div class="case-body">
+          <div class="case-scenario">
+            <strong>Scenario:</strong> Your portfolio's 30+ DPD rate has risen from 2.1% to 3.4% over two quarters. As second-line credit risk, how do you investigate and respond?
+          </div>
+          <div class="card-grid-2" style="margin-bottom:1.5rem">
+            <div class="info-box">
+              <strong>Step 1 — Diagnose Using B-FUME</strong>
+              <ul>
+                <li><strong>Behavioral:</strong> Segment DPD increase by vintage, product, score band, geography</li>
+                <li><strong>Financial:</strong> Check income changes, DTI drift in affected segments</li>
+                <li><strong>Utilization:</strong> Has average utilization risen? New cash advance behavior?</li>
+                <li><strong>Model:</strong> Has PD distribution shifted? Score migration down?</li>
+                <li><strong>External:</strong> Unemployment trend in affected geographies? Sector stress?</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <strong>Step 2 — IFRS 9 Staging Impact</strong>
+              <ul>
+                <li>Accounts moving from Stage 1 → Stage 2 require lifetime ECL (vs 12-month) — significant reserve increase</li>
+                <li>Quantify the Stage 2 population increase and its allowance impact</li>
+                <li>Determine if SICR thresholds remain appropriate or need recalibration</li>
+                <li>Prepare staging memo for senior risk committee and external auditors</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-grid-2">
+            <div class="info-box">
+              <strong>Step 3 — Management Actions</strong>
+              <ul>
+                <li>Proactive CLDs (credit limit decreases) for high-EWI-score accounts</li>
+                <li>Tighten underwriting standards for new originations in affected segments</li>
+                <li>Accelerate collections contact frequency for 1–29 DPD accounts</li>
+                <li>Increase collections staffing if volume warrants it</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <strong>Step 4 — Reporting &amp; Governance</strong>
+              <ul>
+                <li>Update loss forecast in next CECL/IFRS 9 estimate cycle</li>
+                <li>Flag in risk appetite dashboard (Amber → Red if NCO forecast breaches limit)</li>
+                <li>Prepare root cause analysis for credit committee presentation</li>
+                <li>Assess whether macro overlay adjustment is needed in stress models</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-answer" style="margin-top:1.5rem">
+            <div class="ca-title">Key Insight</div>
+            <p>"A 30+ DPD increase of 130bps over two quarters is a material deterioration. The priority is segmentation — is this a systemic macro issue, a vintage-specific underwriting problem, or a regional economic shock? Each requires a different response. IFRS 9 Stage 2 migration will increase the allowance significantly, so early and accurate staging decisions are critical to avoid reserve cliff effects at audit."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE 3: CONCENTRATION RISK -->
+      <div class="case-item">
+        <button class="case-btn" aria-expanded="false">
+          <div class="case-btn-inner">
+            <span class="case-tag case-tag-port">Portfolio Risk</span>
+            <span class="case-title">Geographic Concentration Risk — Housing Market Downturn</span>
+            <span class="case-difficulty diff-hard">Advanced</span>
+          </div>
+        </button>
+        <div class="case-body">
+          <div class="case-scenario">
+            <strong>Scenario:</strong> 28% of your mortgage portfolio is concentrated in Florida. Home prices in Florida have declined 15% YoY. How do you assess and manage this concentration risk?
+          </div>
+          <div class="card-grid-3" style="margin-bottom:1.5rem">
+            <div class="info-box">
+              <strong>Exposure Assessment</strong>
+              <ul>
+                <li>Calculate current LTV distribution after 15% HPI decline</li>
+                <li>Flag accounts crossing 90%, 100% LTV (underwater mortgages)</li>
+                <li>Identify HELOC accounts where CLTV now exceeds 100%</li>
+                <li>Stress-test further 10% and 20% HPI decline scenarios</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <strong>Loss Estimation</strong>
+              <ul>
+                <li>Re-estimate LGD using updated collateral values</li>
+                <li>LGD increases as home values decline — less recovery from foreclosure</li>
+                <li>Update CECL allowance to reflect revised LGD inputs</li>
+                <li>Model correlated defaults — in housing downturns, PD and LGD both rise together (wrong-way risk)</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <strong>Risk Mitigation Actions</strong>
+              <ul>
+                <li>Freeze new HELOC draws on underwater properties</li>
+                <li>Pause new originations in affected zip codes</li>
+                <li>Accelerate proactive outreach to high-LTV borrowers</li>
+                <li>Explore PMI claims on qualifying loans above 80% original LTV</li>
+              </ul>
+            </div>
+          </div>
+          <div class="highlight-box">
+            <strong>Key Concept — Wrong-Way Risk:</strong> In a housing downturn, PD and LGD are positively correlated — borrowers are more likely to default AND recovery is lower because collateral has depreciated. This correlation means expected losses rise non-linearly, and the CECL allowance must reflect this interaction rather than treating PD and LGD as independent inputs.
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE 4: STRESS TEST RESULTS -->
+      <div class="case-item">
+        <button class="case-btn" aria-expanded="false">
+          <div class="case-btn-inner">
+            <span class="case-tag case-tag-stress">Stress Testing</span>
+            <span class="case-title">DFAST Results — Capital Adequacy Under Severely Adverse Scenario</span>
+            <span class="case-difficulty diff-hard">Advanced</span>
+          </div>
+        </button>
+        <div class="case-body">
+          <div class="case-scenario">
+            <strong>Scenario:</strong> Your bank's DFAST submission projects that CET1 would fall to 5.2% (above the 4.5% minimum) under the Severely Adverse scenario. Senior management asks whether this is acceptable.
+          </div>
+          <div class="card-grid-2" style="margin-bottom:1.5rem">
+            <div class="info-box">
+              <strong>Quantitative Analysis</strong>
+              <ul>
+                <li>5.2% CET1 is 70bps above the regulatory minimum of 4.5%</li>
+                <li>But the Combined Capital Buffer (CCyB + CCB) may require 7%+ effective threshold</li>
+                <li>A 70bps cushion is thin — any model uncertainty or scenario severity could breach minimums</li>
+                <li>Evaluate the path: does CET1 drop monotonically or hit a trough mid-scenario?</li>
+                <li>Sensitivity: what if unemployment rises 1% more than the scenario assumed?</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <strong>Qualitative Concerns</strong>
+              <ul>
+                <li>Are satellite models calibrated on post-GFC data that understates recession severity?</li>
+                <li>Is PPNR revenue model too optimistic under stress? (net interest income may compress)</li>
+                <li>Are management actions in the model (dividend cut, balance sheet reduction) realistic?</li>
+                <li>Has the scenario been compared against 2008–2009 actual losses as a sanity check?</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-grid-2">
+            <div class="info-box">
+              <strong>Recommendation Framework</strong>
+              <ul>
+                <li>Pass/fail is binary, but "just passing" warrants management attention and buffer building</li>
+                <li>Consider voluntary capital actions: pause buybacks, reduce dividend, tighten new origination</li>
+                <li>Present to board risk committee with scenario sensitivity ranges, not point estimates</li>
+                <li>Compare results to peer banks if public DFAST disclosures are available</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <strong>30-Second Answer</strong>
+              <p style="font-size:14px;color:var(--slate)">"5.2% technically passes but the 70bps cushion is thin. I'd want to understand the trough timing, whether management actions are credible, and how the satellite models perform against GFC actuals. I'd recommend presenting ranges to the board rather than point estimates, and consider pre-emptive capital conservation actions given the limited buffer."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE 5: FAIR LENDING INVESTIGATION -->
+      <div class="case-item">
+        <button class="case-btn" aria-expanded="false">
+          <div class="case-btn-inner">
+            <span class="case-tag case-tag-reg">Fair Lending</span>
+            <span class="case-title">Disparate Impact Investigation — Auto Loan Pricing</span>
+            <span class="case-difficulty diff-mid">Intermediate</span>
+          </div>
+        </button>
+        <div class="case-body">
+          <div class="case-scenario">
+            <strong>Scenario:</strong> An internal audit finds that Black borrowers in your auto loan portfolio received APRs 85bps higher on average than similarly-qualified white borrowers. How do you investigate and respond?
+          </div>
+          <div class="card-grid-2" style="margin-bottom:1.5rem">
+            <div class="info-box">
+              <strong>Step 1 — Disparate Impact Analysis</strong>
+              <ul>
+                <li>Run regression controlling for all legitimate credit factors: FICO, LTV, DTI, term, loan amount, vehicle type</li>
+                <li>Measure residual APR differential after controlling for risk — is the gap still present?</li>
+                <li>Apply four-fifths (80%) rule to pricing adverse action rates by race</li>
+                <li>Check whether dealer discretion in markup is the source (common in indirect auto)</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <strong>Step 2 — Root Cause Identification</strong>
+              <ul>
+                <li><strong>Dealer markup:</strong> Dealers set final rate above buy rate — uncontrolled discretion creates disparate impact</li>
+                <li><strong>Model inputs:</strong> Does the pricing model use zip code or employer as a variable? These may proxy for race</li>
+                <li><strong>Product design:</strong> Are subprime products (higher rate) disproportionately marketed to minority borrowers?</li>
+                <li><strong>Relationship factors:</strong> Negotiation-based pricing favors borrowers with more banking experience</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-grid-2">
+            <div class="info-box">
+              <strong>Remediation Actions</strong>
+              <ul>
+                <li>Implement dealer markup caps (typically 1.5–2.0% above buy rate)</li>
+                <li>Remove proxy variables from pricing algorithm</li>
+                <li>Conduct historical redress analysis — calculate overcharge amount for affected borrowers</li>
+                <li>Implement ongoing fair lending monitoring as a standard credit risk control</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <strong>Regulatory Exposure</strong>
+              <ul>
+                <li>CFPB ECOA enforcement action possible — civil money penalties and restitution orders</li>
+                <li>DOJ referral if pattern is systemic and intentional</li>
+                <li>Historic CFPB auto fair lending settlements: Ally Financial ($98M, 2013); Honda Finance ($24M, 2015)</li>
+                <li>Proactive self-disclosure and remediation significantly reduces regulatory penalty risk</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE 6: CECL DAY 1 IMPACT -->
+      <div class="case-item">
+        <button class="case-btn" aria-expanded="false">
+          <div class="case-btn-inner">
+            <span class="case-tag case-tag-model">CECL / Provisioning</span>
+            <span class="case-title">CECL Day 1 Adoption — Reserve Impact &amp; Capital Planning</span>
+            <span class="case-difficulty diff-hard">Advanced</span>
+          </div>
+        </button>
+        <div class="case-body">
+          <div class="case-scenario">
+            <strong>Scenario:</strong> Your bank is adopting CECL (ASC 326) for the first time. Estimate the Day 1 reserve impact and explain how it differs from the prior incurred loss reserve.
+          </div>
+          <div class="card-grid-2" style="margin-bottom:1.5rem">
+            <div class="info-box">
+              <strong>Incurred Loss (Prior) vs CECL</strong>
+              <ul>
+                <li><strong>Incurred Loss:</strong> Reserve only when loss is "probable and estimable" — typically triggered by delinquency</li>
+                <li><strong>CECL:</strong> Reserve lifetime expected losses at origination, Day 1, on every loan</li>
+                <li>Result: CECL reserves are typically 1.5–3× larger than incurred loss reserves</li>
+                <li>Timing: CECL front-loads losses; incurred loss model lags behind actual deterioration</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <strong>Day 1 Impact Estimation</strong>
+              <ul>
+                <li>Calculate lifetime PD × LGD × EAD for every loan in the portfolio</li>
+                <li>For credit cards: must model full behavioral life (revolving), not contractual maturity</li>
+                <li>Day 1 adjustment goes through retained earnings (not P&amp;L) — directly reduces CET1</li>
+                <li>Typical Day 1 CET1 impact for large card issuers: −50 to −150 bps</li>
+                <li>CECL transition rules: option to phase in capital impact over 3 years (regulatory relief)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="highlight-box">
+            <strong>Key Nuance — Procyclicality:</strong> CECL amplifies economic cycles. In a recession, PD forecasts rise, increasing reserves and reducing CET1 exactly when banks can least afford it. This was a major criticism during COVID-19 when banks built massive CECL reserves in Q1 2020, tightening credit availability. The FASB acknowledged this trade-off but maintained lifetime estimation as superior to the lagging incurred loss model.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 14: GLOSSARY -->
 <section class="section section-alt" id="glossary">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">12</span>
+      <span class="section-tag">14</span>
       <h2>Glossary of Terms</h2>
       <p>Essential vocabulary for retail credit risk professionals — from entry-level to advanced practitioner.</p>
     </div>
@@ -1098,8 +1647,8 @@ flowchart LR
       <div class="footer-links">
         <a href="#basics">Basics</a><a href="#five-cs">5 C's</a><a href="#metrics">Metrics</a><a href="#models">Models</a>
         <a href="#scorecard">Scorecard</a><a href="#lifecycle">Lifecycle</a><a href="#portfolio">Portfolio</a>
-        <a href="#collections">Collections</a><a href="#stress">Stress Testing</a>
-        <a href="#regulation">Regulation</a><a href="#advanced">Advanced</a><a href="#glossary">Glossary</a>
+        <a href="#collections">Collections</a><a href="#stress">Stress</a><a href="#ews">EWS</a>
+        <a href="#regulation">Regulation</a><a href="#advanced">Advanced</a><a href="#cases">Cases</a><a href="#glossary">Glossary</a>
       </div>
     </div>
     <div class="footer-copy">
