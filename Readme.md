@@ -46,13 +46,6 @@ git push -u origin main
 3. Under "Source", select **GitHub Actions**
 4. The workflow in `.github/workflows/deploy.yml` auto-deploys on every push
 
-### Step 4 — Access your live site
-
-Your site will be live at:
-```
-https://YOUR_USERNAME.github.io/retail-credit-risk/
-```
-
 ---
 
 ## Run Locally (No Build Required)
