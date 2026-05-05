@@ -1,138 +1,105 @@
-# 📊 Retail Credit Risk — A to Z
+# Retail Credit Risk Reference — US Consumer Lending
 
-> A comprehensive reference guide covering retail credit risk from foundational terminology to advanced modelling concepts. Built as a GitHub Pages portfolio site.
+> A comprehensive knowledge base for retail credit risk in the US, from basic terminology through advanced modeling and regulatory concepts. Built as a portfolio reference site using GitHub Pages.
 
-
-
----
-
-## 📖 What's Covered
-
-| Chapter | Topic | Key Concepts |
-|---------|-------|-------------|
-| 01 | **Foundations & Terminology** | PD, LGD, EAD, EL, UL, CCF, Default Definition |
-| 02 | **Origination & Underwriting** | 5 Cs of Credit, Credit Decision Pipeline, DTI, LTV, Affordability |
-| 03 | **Credit Scoring** | Application, Behavioural & Bureau Scores, WOE, IV, Gini, PSI, KS |
-| 04 | **Portfolio Management** | NPL Ratio, Roll Rates, Vintage Analysis, Concentration Risk, RAROC |
-| 05 | **Collections & Recovery** | Delinquency Stages, Forbearance, UTP, Cure Rate, Vulnerable Customers |
-| 06 | **Regulation & Accounting** | Basel III, IRB Approach, IFRS 9 ECL, Staging, SICR, CECL |
-| 07 | **Advanced Risk Concepts** | Economic Capital, RAROC, EVA, FTP, ICAAP, Stress Testing, TTC vs PIT PD |
-| 08 | **Modern Credit Modelling** | ML Scorecards, XGBoost, SHAP, LIME, Model Risk Governance, Fairness & Bias |
+**Live Site:** `https://[your-username].github.io/retail-credit-risk/`
 
 ---
 
-## 🗂 Repository Structure
+## What's Covered
 
-```
-retail-credit-risk/
-├── index.html          # Main GitHub Pages site (single-file, self-contained)
-├── README.md           # This file
-└── _config.yml         # GitHub Pages configuration
-```
+| Section | Topics |
+|---------|--------|
+| **01 — Basics** | Product types (mortgage, cards, auto, HELOC, personal), the credit management cycle |
+| **02 — Metrics** | PD, LGD, EAD, Expected Loss, NCO, DPD, DTI, LTV, FICO score bands |
+| **03 — Models** | WoE scorecards, logistic regression, survival analysis, ML approaches, bureau scores |
+| **04 — Lifecycle** | Origination through charge-off, collections strategy, roll rates, champion/challenger |
+| **05 — Regulation** | ECOA, FCRA, TILA, FDCPA, SCRA, CARD Act, HMDA, CFPB, Basel III, CECL |
+| **06 — Advanced** | DFAST/CCAR stress testing, vintage analysis, CECL methodologies, fair lending, SR 11-7 |
+| **07 — Glossary** | 44 searchable definitions from Adverse Action to Weight of Evidence |
 
 ---
 
-## 🚀 Deploying to GitHub Pages
+## Setup: GitHub Pages Deployment
 
 ### Step 1 — Create a new GitHub repository
+
+1. Go to [github.com/new](https://github.com/new)
+2. Name it `retail-credit-risk`
+3. Set to Public, do NOT initialize with README
+
+### Step 2 — Push this code
 
 ```bash
 git init
 git add .
-git commit -m "Initial commit: Retail Credit Risk reference guide"
+git commit -m "Initial commit: Retail Credit Risk reference site"
 git branch -M main
-git remote add origin https://github.com/<your-username>/retail-credit-risk.git
+git remote add origin https://github.com/YOUR_USERNAME/retail-credit-risk.git
 git push -u origin main
 ```
 
-### Step 2 — Enable GitHub Pages
+### Step 3 — Enable GitHub Pages
 
 1. Go to your repository on GitHub
-2. Click **Settings** → **Pages** (in the left sidebar)
-3. Under **Source**, select **Deploy from a branch**
-4. Select branch: `main`, folder: `/ (root)`
-5. Click **Save**
+2. Click **Settings** → **Pages** (left sidebar)
+3. Under "Source", select **GitHub Actions**
+4. The workflow in `.github/workflows/deploy.yml` auto-deploys on every push
+
+### Step 4 — Access your live site
 
 Your site will be live at:
 ```
-https://<your-username>.github.io/retail-credit-risk/
+https://YOUR_USERNAME.github.io/retail-credit-risk/
 ```
 
-*(Allow 1–2 minutes for the initial build)*
-
 ---
 
-## 🔑 Key Concepts Quick Reference
+## Run Locally (No Build Required)
 
-### The Credit Risk Trinity
+```bash
+# Python
+python3 -m http.server 8080
 
-```
-EL = PD × LGD × EAD
-
-PD  = Probability of Default (% likelihood of default in 12 months)
-LGD = Loss Given Default    (% of EAD lost after recovery)
-EAD = Exposure at Default   (balance at time of default, inc. CCF)
+# Node.js
+npx serve .
 ```
 
-### IFRS 9 Staging
+Open `http://localhost:8080`
+
+---
+
+## Repository Structure
 
 ```
-Stage 1  →  12-month ECL     (no significant change in credit risk)
-Stage 2  →  Lifetime ECL     (significant increase in credit risk / SICR)
-Stage 3  →  Lifetime ECL     (credit-impaired / default)
+retail-credit-risk/
+├── index.html                     Main single-page site
+├── css/
+│   └── style.css                  All styles (no framework)
+├── js/
+│   └── main.js                    Tabs, accordion, glossary search
+├── .github/
+│   └── workflows/
+│       └── deploy.yml             GitHub Pages CI/CD
+└── README.md
 ```
 
-### Scorecard Performance Benchmarks
+---
 
-| Metric | Weak | Acceptable | Good | Strong |
-|--------|------|-----------|------|--------|
-| Gini | < 25% | 25–40% | 40–60% | > 60% |
-| KS | < 20% | 20–35% | 35–50% | > 50% |
-| PSI (stable) | > 0.25 | 0.1–0.25 | < 0.1 | — |
+## Key Concepts
 
-### Basel Capital — IRB vs Standardised
+**Quantitative:** PD/LGD/EAD/EL, NCO rate, Gini/KS/AUC-ROC, PSI/CSI
 
-| Exposure Type | SA Risk Weight | IRB Range |
-|---------------|---------------|-----------|
-| Residential Mortgage (LTV ≤ 80%) | 35% | 5–35% |
-| Qualifying Revolving Retail | 75% | 6–75% |
-| Other Retail | 75% | 10–75% |
+**Modeling:** WoE scorecards, logistic regression, survival models, XGBoost/RF/Neural nets, SHAP explainability
+
+**Regulatory:** ECOA disparate impact, FCRA, Basel III capital rules, CECL (ASC 326), DFAST/CCAR, SR 11-7
+
+**Advanced:** Vintage cohort analysis, CECL methodologies, risk-based pricing, alternative data, FinTech innovation
 
 ---
 
-## 📚 Key Regulatory References
+## Sources
 
-- **Basel III / CRR3** — Capital requirements, IRB approach, output floor
-- **IFRS 9** — Expected Credit Loss, three-stage model
-- **ASC 326 / CECL** — US GAAP equivalent of IFRS 9
-- **EBA GL/2020/06** — Loan origination and monitoring standards
-- **FCA Consumer Duty (PS22/9)** — Good outcomes for retail customers
-- **PRA SS1/23** — Model risk management (UK banks)
-- **Fed SR 11-7** — Model risk management guidance (US)
-- **ECOA / Regulation B** — Fair lending, adverse action notices
-- **GDPR Article 22** — Automated decision-making rights
+Federal Reserve, CFPB, OCC, FDIC, BIS Basel Committee, FASB ASC 326, FICO, VantageScore documentation.
 
----
-
-## 🛠 Tech Stack
-
-- Pure HTML5 / CSS3 — no JavaScript frameworks, no build step
-- [Google Fonts](https://fonts.google.com/) — DM Serif Display, DM Sans, JetBrains Mono
-- Fully responsive; works on mobile and desktop
-- Single-file architecture for GitHub Pages simplicity
-
----
-
-## 📝 Usage
-
-This site is designed as a portfolio reference. Feel free to fork it and customise it for your own use. If you find errors or want to suggest additions, open an issue or pull request.
-
----
-
-## ⚖️ Disclaimer
-
-This reference guide is intended for educational and portfolio purposes only. Regulatory requirements vary by jurisdiction and are subject to change. Always refer to the most current regulatory texts and seek qualified professional advice for production implementations.
-
----
-
-*Retail Credit Risk Reference · Portfolio Edition · 2025*
+*For educational and portfolio purposes. Does not constitute financial or legal advice.*
