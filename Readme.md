@@ -2,7 +2,7 @@
 
 > A comprehensive reference guide covering retail credit risk from foundational terminology to advanced modelling concepts. Built as a GitHub Pages portfolio site.
 
-**Live Site:** `https://<your-username>.github.io/retail-credit-risk/`
+
 
 ---
 
