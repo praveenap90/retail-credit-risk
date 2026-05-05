@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retail Credit Risk — A to Z</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f0f0e;--ink2:#3a3a38;--ink3:#6b6b68;--ink4:#9a9a96;--paper:#faf9f6;--paper2:#f2f0eb;--paper3:#e8e5dc;--accent:#c94c1a;--al:#fdf1eb;--teal:#1a7a6b;--tl:#e8f5f2;--blue:#1a4d8c;--bl:#eaf1fb;--gold:#b5860c;--gl:#fdf6e3;--green:#2d6e2d;--grl:#eef5ee;--bdr:#ddd9cf;--mono:'JetBrains Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.7}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,249,246,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--bdr);padding:0 2rem;display:flex;align-items:center;gap:2rem;height:56px}
+.nb{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ink);text-decoration:none;white-space:nowrap;flex-shrink:0}
+.nb span{color:var(--accent)}
+.nl{display:flex;gap:0;list-style:none;overflow-x:auto;scrollbar-width:none}
+.nl::-webkit-scrollbar{display:none}
+.nl a{display:block;padding:0 14px;font-size:13px;color:var(--ink3);text-decoration:none;white-space:nowrap;height:56px;line-height:56px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nl a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+.hero{padding:80px 2rem 64px;max-width:860px;margin:0 auto}
+.ey{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.ey::before{content:'';display:block;width:28px;height:1px;background:var(--accent)}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,68px);line-height:1.1;margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hs{font-size:18px;font-weight:300;color:var(--ink2);max-width:600px;margin-bottom:40px;line-height:1.6}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{padding:5px 12px;border:1px solid var(--bdr);border-radius:20px;font-size:12px;font-weight:500;color:var(--ink2);background:var(--paper2)}
+.tag.a{background:var(--al);border-color:#f0b89a;color:var(--accent)}
+.tag.t{background:var(--tl);border-color:#a8d5ce;color:var(--teal)}
+.tag.b{background:var(--bl);border-color:#a8c5e8;color:var(--blue)}
+.toc-s{background:var(--paper2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:48px 2rem}
+.toc-i{max-width:1000px;margin:0 auto}
+.tl{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:24px}
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px;background:var(--bdr);border:1px solid var(--bdr)}
+.tc{background:var(--paper);padding:20px;text-decoration:none;color:inherit;transition:background .15s;display:flex;flex-direction:column;gap:6px}
+.tc:hover{background:var(--paper3)}
+.tn{font-family:var(--mono);font-size:11px;color:var(--ink4)}
+.tt{font-size:14px;font-weight:500;color:var(--ink);line-height:1.3}
+.td{font-size:12px;color:var(--ink3);line-height:1.4}
+main{max-width:860px;margin:0 auto;padding:0 2rem 80px}
+.ch{padding-top:72px;border-top:1px solid var(--bdr);margin-top:72px}
+.ch:first-child{border-top:none}
+.chh{margin-bottom:40px}
+.cn{font-family:var(--mono);font-size:11px;color:var(--ink4);letter-spacing:.08em;margin-bottom:8px}
+.ch h2{font-family:'DM Serif Display',serif;font-size:clamp(26px,4vw,38px);line-height:1.15;margin-bottom:12px}
+.ci{font-size:17px;font-weight:300;color:var(--ink2);line-height:1.6;max-width:680px}
+h3{font-family:'DM Serif Display',serif;font-size:21px;font-weight:400;color:var(--ink);margin:32px 0 14px}
+p{margin-bottom:16px;color:var(--ink2)}
+p:last-child{margin-bottom:0}
+.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--bdr);border:1px solid var(--bdr);margin:28px 0}
+.dc{background:var(--paper);padding:20px 22px;transition:background .12s}
+.dc:hover{background:var(--paper2)}
+.dt{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.db{font-size:14px;color:var(--ink2);line-height:1.5}
+.df{margin-top:8px;padding:6px 10px;background:var(--paper3);border-left:2px solid var(--accent);font-family:var(--mono);font-size:11.5px;color:var(--ink2)}
+.fb{background:var(--paper3);border:1px solid var(--bdr);border-left:3px solid var(--accent);padding:20px 24px;margin:24px 0;font-family:var(--mono);font-size:13.5px;line-height:1.9;color:var(--ink2)}
+.fl{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px}
+.ps{margin:32px 0}
+.st{display:flex;gap:20px;margin-bottom:0;position:relative}
+.st::after{content:'';position:absolute;left:16px;top:36px;bottom:0;width:1px;background:var(--bdr)}
+.st:last-child::after{display:none}
+.sn{width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;flex-shrink:0;margin-top:2px;position:relative;z-index:1}
+.sc{padding-bottom:32px}
+.stl{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.sb{font-size:14px;color:var(--ink2);line-height:1.6}
+.call{padding:16px 22px;margin:24px 0;border-radius:2px;border-left:3px solid;font-size:14px;line-height:1.6}
+.call.info{background:var(--bl);border-color:var(--blue)}
+.call.warn{background:var(--gl);border-color:var(--gold)}
+.call.suc{background:var(--grl);border-color:var(--green)}
+.call.dan{background:var(--al);border-color:var(--accent)}
+.call strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;color:var(--ink4)}
+.call p{color:var(--ink2);margin:0}
+.dtw{overflow-x:auto;margin:24px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px;border:1px solid var(--bdr)}
+thead tr{background:var(--paper3)}
+th{padding:10px 14px;text-align:left;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);border-bottom:1px solid var(--bdr);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--bdr);color:var(--ink2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--paper2)}
+td.mono{font-family:var(--mono);font-size:12px}
+.bx{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.bx.g{background:var(--grl);color:var(--green)}
+.bx.am{background:var(--gl);color:var(--gold)}
+.bx.r{background:var(--al);color:var(--accent)}
+.bx.b{background:var(--bl);color:var(--blue)}
+.bx.gy{background:var(--paper3);color:var(--ink3)}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px;margin:28px 0}
+.cc{border:1px solid var(--bdr);padding:20px;background:var(--paper)}
+.cch{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.ci2{width:32px;height:32px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.cch h4{font-size:14px;font-weight:500}
+.cl{list-style:none;padding:0;font-size:13px;color:var(--ink2);display:flex;flex-direction:column;gap:6px}
+.cl li{padding-left:14px;position:relative;line-height:1.4}
+.cl li::before{content:'–';position:absolute;left:0;color:var(--ink4)}
+.sb2{display:flex;height:40px;border-radius:2px;overflow:hidden;margin:20px 0 8px;border:1px solid var(--bdr)}
+.sbd{display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:500;color:white;flex-direction:column;line-height:1.2}
+.sl{display:flex;justify-content:space-between;font-size:11px;color:var(--ink3);font-family:var(--mono);margin-bottom:14px}
+.hl{border:1px solid var(--bdr);background:var(--paper2);padding:20px 24px;margin:24px 0}
+.hl h4{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink4);margin-bottom:12px}
+.ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;margin:16px 0}
+.ul li{font-size:14.5px;color:var(--ink2);padding-left:20px;position:relative;line-height:1.5}
+.ul li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:12px;top:2px}
+code{font-family:var(--mono);font-size:12.5px;background:var(--paper3);padding:1px 5px;border:1px solid var(--bdr);border-radius:3px;color:var(--ink2)}
+.bt{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink4);text-decoration:none;margin-bottom:16px;transition:color .15s}
+.bt:hover{color:var(--accent)}
+.fn{font-size:12px;color:var(--ink4);border-top:1px solid var(--bdr);margin-top:80px;padding-top:24px;line-height:1.6}
+@media(max-width:600px){nav,main,.hero,.toc-s{padding-left:1rem;padding-right:1rem}.hero h1{font-size:32px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nb" href="#top"><span>Retail</span> Credit Risk</a>
+  <ul class="nl">
+    <li><a href="#basics">Basics</a></li>
+    <li><a href="#origination">Origination</a></li>
+    <li><a href="#scoring">Scoring</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#regulation">Regulation</a></li>
+    <li><a href="#advanced">Advanced</a></li>
+    <li><a href="#models">ML Models</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="top">
+  <div class="ey">Portfolio Reference Guide</div>
+  <h1>Retail <em>Credit Risk</em><br>A to Z</h1>
+  <p class="hs">From foundational terminology to advanced modelling — a comprehensive reference on how financial institutions assess, price, and manage credit risk for individual borrowers.</p>
+  <div class="tags">
+    <span class="tag a">PD · LGD · EAD</span>
+    <span class="tag t">Scorecards · IFRS 9</span>
+    <span class="tag b">Basel III · IRB</span>
+    <span class="tag">Collections · Recovery</span>
+    <span class="tag">Stress Testing</span>
+  </div>
+</section>
+
+<section class="toc-s">
+  <div class="toc-i">
+    <p class="tl">Contents</p>
+    <div class="tg">
+      <a class="tc" href="#basics"><span class="tn">01</span><span class="tt">Foundations &amp; Terminology</span><span class="td">Core definitions every analyst must know</span></a>
+      <a class="tc" href="#origination"><span class="tn">02</span><span class="tt">Origination &amp; Underwriting</span><span class="td">Credit application pipeline and decisioning</span></a>
+      <a class="tc" href="#scoring"><span class="tn">03</span><span class="tt">Credit Scoring</span><span class="td">Application, behavioural &amp; bureau scores</span></a>
+      <a class="tc" href="#portfolio"><span class="tn">04</span><span class="tt">Portfolio Management</span><span class="td">Concentration, vintage, and risk appetite</span></a>
+      <a class="tc" href="#collections"><span class="tn">05</span><span class="tt">Collections &amp; Recovery</span><span class="td">Delinquency, write-off, and debt recovery</span></a>
+      <a class="tc" href="#regulation"><span class="tn">06</span><span class="tt">Regulation &amp; Accounting</span><span class="td">Basel III, IFRS 9, and expected credit loss</span></a>
+      <a class="tc" href="#advanced"><span class="tn">07</span><span class="tt">Advanced Risk Concepts</span><span class="td">IRB, stress testing, capital and RAROC</span></a>
+      <a class="tc" href="#models"><span class="tn">08</span><span class="tt">Modern Credit Modelling</span><span class="td">ML, XGBoost, SHAP, model risk governance</span></a>
+    </div>
+  </div>
+</section>
+
+<main>
+
+<!-- ═══ CH 1 ═══ -->
+<article class="ch" id="basics">
+<a class="bt" href="#top">↑ Back to top</a>
+<header class="chh">
+  <p class="cn">Chapter 01</p>
+  <h2>Foundations &amp; Terminology</h2>
+  <p class="ci">Retail credit risk is the potential loss a lender faces when a borrower — an individual rather than a corporation — fails to repay. Understanding the building blocks is essential before tackling advanced models.</p>
+</header>
+
+<h3>The Credit Risk Trinity</h3>
+<p>Every credit risk calculation ultimately reduces to three core components. These parameters drive provisioning, pricing, capital and strategy.</p>
+
+<div class="dg">
+  <div class="dc"><div class="dt">PD — Probability of Default</div><div class="db">The likelihood that a borrower will fail to meet contractual obligations over a given horizon (typically 12 months). Expressed as a percentage.</div><div class="df">PD = P(default | borrower characteristics)</div></div>
+  <div class="dc"><div class="dt">LGD — Loss Given Default</div><div class="db">The fraction of the exposure the lender loses if default occurs, net of recoveries and collateral. 1 − LGD = Recovery Rate.</div><div class="df">LGD = (EAD − Recovery) / EAD</div></div>
+  <div class="dc"><div class="dt">EAD — Exposure at Default</div><div class="db">The total outstanding balance expected at the time of default, including drawn balances and estimated future drawdowns on revolving facilities.</div><div class="df">EAD = Current Balance + CCF × Undrawn</div></div>
+  <div class="dc"><div class="dt">Expected Loss (EL)</div><div class="db">The average credit loss anticipated from a portfolio or facility over a specified period. Used for provisioning and pricing.</div><div class="df">EL = PD × LGD × EAD</div></div>
+  <div class="dc"><div class="dt">Unexpected Loss (UL)</div><div class="db">Losses beyond the expected level, arising from correlation effects and tail events. UL drives economic capital requirements.</div><div class="df">UL ≈ EAD × LGD × √(PD × (1-PD))</div></div>
+  <div class="dc"><div class="dt">Credit Conversion Factor (CCF)</div><div class="db">Estimates the proportion of undrawn commitment likely to be drawn prior to default. Key for credit cards and revolving lines.</div><div class="df">CCF = (EAD − Current) / Undrawn Limit</div></div>
+</div>
+
+<h3>Key Retail Product Types</h3>
+<div class="dtw"><table>
+  <thead><tr><th>Product</th><th>Typical LGD</th><th>Key Risk Driver</th><th>Regulatory Treatment</th></tr></thead>
+  <tbody>
+    <tr><td>Residential Mortgage</td><td class="mono">15–35%</td><td>LTV, income, property value</td><td><span class="bx g">Retail — Secured</span></td></tr>
+    <tr><td>Personal Loan</td><td class="mono">60–80%</td><td>Income, credit history, DTI</td><td><span class="bx b">Retail — Other</span></td></tr>
+    <tr><td>Credit Card</td><td class="mono">70–90%</td><td>Utilisation, payment behaviour</td><td><span class="bx am">Qualifying Revolving</span></td></tr>
+    <tr><td>Auto Loan</td><td class="mono">25–45%</td><td>LTV, vehicle depreciation</td><td><span class="bx g">Retail — Secured</span></td></tr>
+    <tr><td>Overdraft</td><td class="mono">75–95%</td><td>Utilisation, behavioural score</td><td><span class="bx am">Qualifying Revolving</span></td></tr>
+    <tr><td>Buy Now Pay Later</td><td class="mono">60–85%</td><td>Merchant risk, income proxy</td><td><span class="bx gy">Evolving (BNPL)</span></td></tr>
+  </tbody>
+</table></div>
+
+<h3>Default Definition</h3>
+<p>The regulatory definition of default under Basel (CRR Article 178) is triggered by either:</p>
+<ul class="ul">
+  <li><strong>90 days past due</strong> — the obligor is more than 90 DPD on a material credit obligation (up to 180 days for some retail exposures in certain jurisdictions).</li>
+  <li><strong>Unlikely to pay (UTP)</strong> — the institution considers the obligor unlikely to pay without realisation of collateral. Triggers include forbearance, write-down, distressed restructure, or bankruptcy.</li>
+</ul>
+<div class="call warn"><strong>Important</strong><p>The materiality threshold for the 90-DPD test is set by local regulators. In the EU it is the higher of €100 or 1% of total exposure. Institutions must apply default consistently across the obligor's full exposure (contagion rule).</p></div>
+</article>
+
+<!-- ═══ CH 2 ═══ -->
+<article class="ch" id="origination">
+<a class="bt" href="#top">↑ Back to top</a>
+<header class="chh">
+  <p class="cn">Chapter 02</p>
+  <h2>Origination &amp; Underwriting</h2>
+  <p class="ci">Underwriting is the structured process of evaluating a credit application against a lender's risk appetite, culminating in an accept, decline, or refer decision.</p>
+</header>
+
+<h3>The Credit Decision Pipeline</h3>
+<div class="ps">
+  <div class="st"><div class="sn">1</div><div class="sc"><div class="stl">Application &amp; Identity Verification</div><div class="sb">Customer submits application data. KYC/AML checks confirm identity and screen against sanctions lists. Real-time fraud scores applied. Soft credit bureau search may be run at pre-qualification stage.</div></div></div>
+  <div class="st"><div class="sn">2</div><div class="sc"><div class="stl">Bureau Pull &amp; Data Enrichment</div><div class="sb">Hard or soft credit bureau enquiry retrieves trade lines, derogatory marks, payment history, and existing indebtedness. Open Banking transaction data may supplement thin-file applicants.</div></div></div>
+  <div class="st"><div class="sn">3</div><div class="sc"><div class="stl">Scorecard &amp; Policy Rules</div><div class="sb">Application score derived. Automatic declines applied for hard cutoffs (e.g. current default, undischarged bankruptcy). Policy rules remove specific risk segments before manual referral.</div></div></div>
+  <div class="st"><div class="sn">4</div><div class="sc"><div class="stl">Affordability Assessment</div><div class="sb">Debt-to-income (DTI) ratio, net disposable income (NDI), and stress-tested repayments checked against minimum standards. Regulatory requirement in most jurisdictions.</div></div></div>
+  <div class="st"><div class="sn">5</div><div class="sc"><div class="stl">Decision Engine Output</div><div class="sb">Waterfall of rules produces Accept / Decline / Refer. Refer cases route to manual underwriting queues with supporting data packs. Accepted cases proceed to offer and pricing.</div></div></div>
+  <div class="st"><div class="sn">6</div><div class="sc"><div class="stl">Offer, Pricing &amp; Limit Setting</div><div class="sb">Risk-based pricing ties interest rate to PD band. Credit limit assignment uses income, bureau utilisation, and affordability. Customer accepts; facility is booked and monitoring begins.</div></div></div>
+</div>
+
+<h3>The 5 Cs of Credit</h3>
+<div class="cg">
+  <div class="cc"><div class="cch"><div class="ci2" style="background:var(--al);">💡</div><h4>Character</h4></div><ul class="cl"><li>Credit history and bureau score</li><li>Previous delinquencies or defaults</li><li>Relationship tenure with lender</li><li>Repayment behaviour on existing debt</li></ul></div>
+  <div class="cc"><div class="cch"><div class="ci2" style="background:var(--grl);">💰</div><h4>Capacity</h4></div><ul class="cl"><li>Monthly income (net / gross)</li><li>Debt-to-income ratio (DTI)</li><li>Employment stability and type</li><li>Net disposable income after commitments</li></ul></div>
+  <div class="cc"><div class="cch"><div class="ci2" style="background:var(--bl);">🏠</div><h4>Collateral</h4></div><ul class="cl"><li>Property value and loan-to-value (LTV)</li><li>Vehicle depreciation schedule</li><li>Enforceability of security interest</li><li>Liquidation timeline and recovery costs</li></ul></div>
+  <div class="cc"><div class="cch"><div class="ci2" style="background:var(--gl);">📊</div><h4>Capital</h4></div><ul class="cl"><li>Savings and liquid assets</li><li>Investment portfolio and pension value</li><li>Property equity outside the loan</li><li>Ability to absorb income shocks</li></ul></div>
+  <div class="cc"><div class="cch"><div class="ci2" style="background:var(--paper3);">🌍</div><h4>Conditions</h4></div><ul class="cl"><li>Purpose of loan (secured vs. unsecured)</li><li>Macroeconomic environment</li><li>Industry / sector of employment</li><li>Interest rate environment and stress</li></ul></div>
+</div>
+
+<h3>Key Affordability Metrics</h3>
+<div class="fb">
+  <div class="fl">Debt-to-Income Ratio</div>
+  DTI = Total Monthly Debt Obligations / Gross Monthly Income × 100
+  <br><br>
+  <div class="fl">Net Disposable Income</div>
+  NDI = Net Income − Living Costs − All Debt Servicing
+  <br><br>
+  <div class="fl">Loan-to-Value (Mortgages)</div>
+  LTV = Loan Amount / Property Value × 100
+  <br><br>
+  <div class="fl">Stress Test Payment</div>
+  Stressed Payment = Balance × (Current Rate + Stress Buffer) / 12
+</div>
+</article>
+
+<!-- ═══ CH 3 ═══ -->
+<article class="ch" id="scoring">
+<a class="bt" href="#top">↑ Back to top</a>
+<header class="chh">
+  <p class="cn">Chapter 03</p>
+  <h2>Credit Scoring</h2>
+  <p class="ci">Credit scoring translates borrower attributes into a rank-ordering statistic that predicts the probability of default or delinquency.</p>
+</header>
+
+<h3>Score Types</h3>
+<div class="dg">
+  <div class="dc"><div class="dt">Application Score</div><div class="db">Built at origination using application form data and bureau information. Predicts default within 12–24 months of booking. Drives accept/decline and limit setting.</div></div>
+  <div class="dc"><div class="dt">Behavioural Score</div><div class="db">Uses ongoing account behaviour — payments, utilisation, transactions — to refresh risk assessment monthly. Drives limit management and collections strategies.</div></div>
+  <div class="dc"><div class="dt">Bureau Score</div><div class="db">Third-party generic score (e.g. FICO, Experian) derived purely from credit file data. Useful as input feature or thin-file proxy; not calibrated to lender's own portfolio.</div></div>
+  <div class="dc"><div class="dt">Collections Score</div><div class="db">Predicts whether a delinquent account will self-cure, roll further, or recover. Determines contact prioritisation and collections treatment strategy.</div></div>
+  <div class="dc"><div class="dt">Propensity Score</div><div class="db">Predicts likelihood of customer taking a product offer. When combined with a risk score, enables risk-adjusted marketing targeting.</div></div>
+  <div class="dc"><div class="dt">Attrition Score</div><div class="db">Predicts probability of pre-payment or account closure. Important for net interest margin (NIM) forecasting and retention strategy.</div></div>
+</div>
+
+<h3>Score Band Risk Profile</h3>
+<div class="sb2">
+  <div class="sbd" style="flex:5;background:#d73027;">Very Poor<br>300–579</div>
+  <div class="sbd" style="flex:8;background:#f46d43;">Fair<br>580–669</div>
+  <div class="sbd" style="flex:10;background:#fdae61;color:#333;">Good<br>670–739</div>
+  <div class="sbd" style="flex:10;background:#66bd63;">Very Good<br>740–799</div>
+  <div class="sbd" style="flex:8;background:#1a9850;">Exceptional<br>800–850</div>
+</div>
+<div class="sl"><span>← Higher Risk</span><span>Lower Risk →</span></div>
+
+<h3>Scorecard Development Process</h3>
+<div class="ps">
+  <div class="st"><div class="sn">1</div><div class="sc"><div class="stl">Data Collection &amp; Sample Design</div><div class="sb">Define observation window (when booked), performance window (outcome measured), and outcome definition. Extract sample ensuring adequate bad rates (~5–15% ideal). Address through-the-door vs. accepted-only selection bias (reject inference).</div></div></div>
+  <div class="st"><div class="sn">2</div><div class="sc"><div class="stl">Variable Selection &amp; WOE Binning</div><div class="sb">Weight of Evidence (WOE) transforms variables into log-odds space. Information Value (IV) measures predictive power per variable. IV &gt; 0.02 = some value; IV &gt; 0.5 = suspicious (possible data leakage).</div></div></div>
+  <div class="st"><div class="sn">3</div><div class="sc"><div class="stl">Logistic Regression (or ML model)</div><div class="sb">Logistic regression is industry standard for regulatory scorecards due to explainability. Output is log-odds, transformed to a scaled score using Points-to-Double-the-Odds (PDO) scaling convention.</div></div></div>
+  <div class="st"><div class="sn">4</div><div class="sc"><div class="stl">Validation &amp; Performance Testing</div><div class="sb">Gini coefficient (= 2×AUC−1) measures rank-ordering power; target Gini &gt; 40% for application scores. KS statistic measures max separation between goods and bads. Calibration tested via Hosmer-Lemeshow test.</div></div></div>
+  <div class="st"><div class="sn">5</div><div class="sc"><div class="stl">Monitoring &amp; Annual Review</div><div class="sb">Population Stability Index (PSI) tracks score distribution drift. PSI &gt; 0.1 = minor shift (monitor); &gt; 0.2 = significant (investigate); &gt; 0.25 = model likely requires redevelopment.</div></div></div>
+</div>
+
+<div class="fb">
+  <div class="fl">WOE and IV Formulae</div>
+  WOE_i = ln(Distribution_Goods_i / Distribution_Bads_i)
+  <br>
+  IV = Σ (Distribution_Goods_i − Distribution_Bads_i) × WOE_i
+  <br><br>
+  <div class="fl">Score Scaling (Points-to-Double-the-Odds)</div>
+  Score = Offset − PDO × log₂(odds)
+  <br>
+  Typical: Base Score=600, PDO=20, Base Odds=50:1
+  <br><br>
+  <div class="fl">Gini Coefficient</div>
+  Gini = 2 × AUC − 1      (ranges 0 to 1; higher = better discrimination)
+  <br><br>
+  <div class="fl">Population Stability Index</div>
+  PSI = Σ (Actual% − Expected%) × ln(Actual% / Expected%)
+</div>
+</article>
+
+<!-- ═══ CH 4 ═══ -->
+<article class="ch" id="portfolio">
+<a class="bt" href="#top">↑ Back to top</a>
+<header class="chh">
+  <p class="cn">Chapter 04</p>
+  <h2>Portfolio Management</h2>
+  <p class="ci">Portfolio management involves monitoring the aggregate risk profile of a credit book, identifying concentrations, and aligning performance with the institution's risk appetite framework.</p>
+</header>
+
+<h3>Core Portfolio Metrics</h3>
+<div class="dg">
+  <div class="dc"><div class="dt">NPL Ratio</div><div class="db">Non-Performing Loans as a proportion of total gross loans. Loans &gt;90 DPD or in default. Key headline indicator tracked by regulators and investors.</div><div class="df">NPL% = NPL Balance / Gross Loan Book</div></div>
+  <div class="dc"><div class="dt">Coverage Ratio</div><div class="db">Loan loss provisions held as a percentage of NPL balance. Indicates adequacy of provisioning buffer against non-performing exposure.</div><div class="df">Coverage = Provisions / NPL Balance</div></div>
+  <div class="dc"><div class="dt">Net Charge-off Rate</div><div class="db">Net write-offs (write-offs less recoveries) annualised as a % of average outstanding balances. Common in US retail credit reporting.</div><div class="df">NCO Rate = Net Charge-offs / Avg Balances × 4</div></div>
+  <div class="dc"><div class="dt">Roll Rate</div><div class="db">Percentage of accounts in a delinquency bucket that move to the next worse bucket in the following period. Core input to loss forecasting models.</div><div class="df">Roll = Accounts in bucket B(t+1) / Bucket A(t)</div></div>
+  <div class="dc"><div class="dt">Vintage Analysis</div><div class="db">Tracks cumulative default rate of accounts booked in the same period as they season. Reveals origination quality and portfolio seasoning effects over time.</div></div>
+  <div class="dc"><div class="dt">RAROC</div><div class="db">Risk-Adjusted Return on Capital. Compares risk-adjusted income to economic capital consumed. Enables comparison of profitability across products and segments.</div><div class="df">RAROC = (Revenue − EL − OpEx) / Econ. Capital</div></div>
+</div>
+
+<h3>Vintage Analysis</h3>
+<div class="hl"><h4>Reading a Vintage Curve</h4>
+<p>Vintage curves plot cumulative default rate (y-axis) against months-on-book (x-axis) for each booking cohort. Key patterns to monitor:</p>
+<ul class="ul">
+  <li>Curves rising steeply in months 6–18 signal adverse selection or deteriorating underwriting standards</li>
+  <li>A recent cohort tracking above older vintages at the same seasoning point is an early warning signal requiring investigation</li>
+  <li>Flat curves after month 30 indicate maturity; most losses have been realised — useful for LGD and EAD calibration</li>
+  <li>Diverging curves by origination channel (direct vs. broker) reveal distribution quality differences</li>
+</ul>
+</div>
+
+<h3>Concentration Risk</h3>
+<div class="call info"><strong>Definition</strong><p>Concentration risk arises when a portfolio has excessive exposure to a single borrower, geographic region, industry, product type, or risk segment. Diversification reduces unexpected loss; concentration amplifies tail risk and correlation.</p></div>
+<div class="dtw"><table>
+  <thead><tr><th>Concentration Type</th><th>Retail Manifestation</th><th>Management Tool</th></tr></thead>
+  <tbody>
+    <tr><td>Geographic</td><td>Overexposure to one region experiencing house price falls</td><td>Regional LTV limits, stressed HPI scenarios</td></tr>
+    <tr><td>Product</td><td>Over-reliance on high-LTV mortgages or BNPL</td><td>Product mix limits in Risk Appetite Framework</td></tr>
+    <tr><td>Channel</td><td>Broker vs. direct origination quality divergence</td><td>Vintage monitoring by channel; LTV limits per channel</td></tr>
+    <tr><td>Employment Sector</td><td>High exposure to hospitality workers or gig economy</td><td>Sector caps; employment type analysis in affordability</td></tr>
+    <tr><td>Risk Score Band</td><td>Growth in sub-prime vs. prime origination mix</td><td>Score band limits; board-approved risk appetite buckets</td></tr>
+  </tbody>
+</table></div>
+</article>
+
+<!-- ═══ CH 5 ═══ -->
+<article class="ch" id="collections">
+<a class="bt" href="#top">↑ Back to top</a>
+<header class="chh">
+  <p class="cn">Chapter 05</p>
+  <h2>Collections &amp; Recovery</h2>
+  <p class="ci">Collections is the discipline of managing accounts once they become delinquent — from the first missed payment through to legal enforcement and debt sale.</p>
+</header>
+
+<h3>Delinquency Stages</h3>
+<div class="ps">
+  <div class="st"><div class="sn" style="background:#f4a261;">!</div><div class="sc"><div class="stl">Early Arrears — 1–30 DPD</div><div class="sb">Self-cure rate ~60–70%. Automated SMS/email prompts. Focus on "can pay, won't pay" identification. Promise-to-pay (PTP) arrangements. Minimal cost per case. Collections score drives early prioritisation.</div></div></div>
+  <div class="st"><div class="sn" style="background:#e17055;">!!</div><div class="sc"><div class="stl">Mid Arrears — 31–89 DPD</div><div class="sb">Self-cure rate drops to ~30–40%. Proactive outbound calling. Vulnerability assessment and full affordability review. Instalment plans, payment holidays, and formal forbearance offers. IFRS 9 Stage 2 trigger likely.</div></div></div>
+  <div class="st"><div class="sn" style="background:#c0392b;">!!!</div><div class="sc"><div class="stl">Default — 90+ DPD or Unlikely to Pay</div><div class="sb">Regulatory default triggered. IFRS 9 Stage 3 (lifetime ECL). Formal default notice issued. Debt Management Plan (DMP) or IVA referral. Free debt advice signposting required (UK regulatory obligation).</div></div></div>
+  <div class="st"><div class="sn" style="background:#7f8c8d;">W</div><div class="sc"><div class="stl">Write-off &amp; Recovery</div><div class="sb">Typically 150–180 DPD for unsecured; 12–18 months for secured post-repossession. Removed from balance sheet. Recovery via in-house collections, third-party debt purchaser sale, or legal enforcement. Recoveries credited back to reduce realised LGD.</div></div></div>
+</div>
+
+<h3>Forbearance &amp; Vulnerability</h3>
+<div class="dg">
+  <div class="dc"><div class="dt">Forbearance</div><div class="db">A concession granted to a borrower in financial difficulty that would not be offered under normal commercial circumstances. Includes rate reduction, payment holiday, term extension, partial capitalisation, or partial write-off.</div></div>
+  <div class="dc"><div class="dt">Unlikely to Pay (UTP)</div><div class="db">Default trigger even without 90 DPD if the institution judges the borrower unlikely to pay in full without enforcement of collateral. Includes bankruptcy, write-down, and distressed restructure.</div></div>
+  <div class="dc"><div class="dt">Cure Rate</div><div class="db">Percentage of accounts returning to performing status after forbearance. IFRS 9 requires a 2-year post-forbearance probation period before restaging to Stage 1 or removing from Stage 2.</div></div>
+  <div class="dc"><div class="dt">Vulnerable Customer</div><div class="db">UK FCA: a customer who, due to personal circumstances, is especially susceptible to harm. Factors include health conditions, life events, financial resilience, and financial capability. Requires tailored treatment.</div></div>
+</div>
+
+<div class="call suc"><strong>UK Regulatory Context — Consumer Duty 2023</strong><p>Under FCA Consumer Duty (PS22/9), firms must deliver good outcomes for all customers including those in financial difficulty. Collections practices must demonstrate fair treatment, accessible communications in plain English, and active signposting to free debt advice (StepChange, Citizens Advice, National Debtline).</p></div>
+</article>
+
+<!-- ═══ CH 6 ═══ -->
+<article class="ch" id="regulation">
+<a class="bt" href="#top">↑ Back to top</a>
+<header class="chh">
+  <p class="cn">Chapter 06</p>
+  <h2>Regulation &amp; Accounting</h2>
+  <p class="ci">Credit risk is shaped by two major frameworks: Basel capital regulation (how much capital to hold) and IFRS 9 accounting (how much provision to hold against expected losses).</p>
+</header>
+
+<h3>Basel III Capital Framework</h3>
+<p>Basel III requires banks to hold sufficient capital against credit risk. For retail portfolios two approaches exist:</p>
+<div class="cg">
+  <div class="cc"><div class="cch"><div class="ci2" style="background:var(--bl);">🏦</div><h4>Standardised Approach (SA)</h4></div><ul class="cl"><li>Risk weights prescribed by regulator</li><li>Retail residential mortgages: 35% (LTV ≤80%) to 100%</li><li>Qualifying revolving retail: 75% risk weight</li><li>Other retail exposures: 75% risk weight</li><li>Simpler; less risk-sensitive</li><li>Used by smaller banks or pre-IRB approval</li></ul></div>
+  <div class="cc" style="border:2px solid var(--blue)"><div class="cch"><div class="ci2" style="background:var(--tl);">⚙️</div><h4>Internal Ratings-Based (IRB)</h4></div><ul class="cl"><li>Banks use own PD / LGD / EAD estimates</li><li>Foundation IRB: regulator sets LGD &amp; EAD</li><li>Advanced IRB: bank estimates all parameters</li><li>Capital = f(PD, LGD, EAD, correlation ρ)</li><li>Requires supervisory approval and robust governance</li><li>Basel IV output floor: 72.5% of SA by 2028</li></ul></div>
+</div>
+
+<div class="fb">
+  <div class="fl">Basel IRB Capital Formula (Retail)</div>
+  K = LGD × [N(√(1/(1-R)) × G(PD) + √(R/(1-R)) × G(0.999)) − PD]
+  <br>
+  R (correlation) = 0.03×(1-e^(-35×PD))/(1-e^(-35)) + 0.16×[1-(1-e^(-35×PD))/(1-e^(-35))]
+  <br><br>
+  RWA = K × 12.5 × EAD
+  <br>
+  Minimum CET1 Capital Required = RWA × 4.5%
+</div>
+
+<h3>IFRS 9 — Expected Credit Loss (ECL)</h3>
+<p>IFRS 9 (effective 2018) replaced IAS 39 incurred loss with a forward-looking ECL model using three staging buckets:</p>
+<div class="dtw"><table>
+  <thead><tr><th>Stage</th><th>Definition</th><th>ECL Measurement</th><th>Interest Accrual</th></tr></thead>
+  <tbody>
+    <tr><td><span class="bx g">Stage 1</span></td><td>No significant increase in credit risk since origination (performing)</td><td>12-month ECL</td><td>Effective interest on gross balance</td></tr>
+    <tr><td><span class="bx am">Stage 2</span></td><td>Significant increase in credit risk (SICR) — e.g. score deterioration, 30+ DPD, watchlist placement</td><td>Lifetime ECL</td><td>Effective interest on gross balance</td></tr>
+    <tr><td><span class="bx r">Stage 3</span></td><td>Credit-impaired — meets default definition (90 DPD, UTP, forbearance)</td><td>Lifetime ECL (credit-impaired)</td><td>Effective interest on net (post-provision) balance</td></tr>
+  </tbody>
+</table></div>
+
+<div class="call warn"><strong>SICR — Significant Increase in Credit Risk</strong><p>SICR triggers the move from Stage 1 to Stage 2 and switches provisioning from 12-month to lifetime ECL. Typical indicators: PD increase ≥200% vs. origination PD, absolute PD threshold, 30 DPD backstop, watchlist placement, or forbearance. Defining SICR criteria involves significant management judgement and is a key area of regulatory scrutiny.</p></div>
+
+<div class="fb">
+  <div class="fl">12-Month ECL (Stage 1)</div>
+  ECL₁₂ = PD₁₂ × LGD × EAD × Discount Factor
+  <br><br>
+  <div class="fl">Lifetime ECL (Stage 2 &amp; 3)</div>
+  ECL_Lifetime = Σ (PDₜ × LGD × EADₜ × DFₜ) for t = 1 to remaining life
+  <br>
+  where PDₜ = marginal PD in period t (conditional on survival to t)
+  <br><br>
+  <div class="fl">Multiple Economic Scenarios (IFRS 9 para 5.5.17)</div>
+  ECL = Σ (Probability_s × ECL_s) across scenarios s
+  <br>
+  Minimum: Base, Upside, and Downside scenarios weighted by assigned probability
+</div>
+</article>
+
+<!-- ═══ CH 7 ═══ -->
+<article class="ch" id="advanced">
+<a class="bt" href="#top">↑ Back to top</a>
+<header class="chh">
+  <p class="cn">Chapter 07</p>
+  <h2>Advanced Risk Concepts</h2>
+  <p class="ci">Beyond day-to-day management, credit risk professionals must understand capital adequacy, stress testing, risk appetite frameworks, and economic capital allocation.</p>
+</header>
+
+<h3>Economic Capital &amp; Risk-Adjusted Return</h3>
+<div class="dg">
+  <div class="dc"><div class="dt">Economic Capital (EC)</div><div class="db">Capital estimated internally (not by regulator) to absorb unexpected losses at a confidence level of typically 99.9%. Equals the difference between loss VaR at 99.9% and expected loss.</div><div class="df">EC = VaR(99.9%) − EL</div></div>
+  <div class="dc"><div class="dt">RAROC</div><div class="db">Risk-Adjusted Return on Capital. Compares risk-adjusted income to economic capital consumed. Enables apples-to-apples comparison of profitability across business lines and products.</div><div class="df">RAROC = (NII − EL − OpEx + FTP) / EC</div></div>
+  <div class="dc"><div class="dt">EVA — Economic Value Added</div><div class="db">Profit above the cost of capital. Positive EVA means the business creates shareholder value; negative destroys it.</div><div class="df">EVA = (RAROC − WACC) × Economic Capital</div></div>
+  <div class="dc"><div class="dt">FTP — Funds Transfer Pricing</div><div class="db">Internal pricing mechanism allocating funding costs and benefits between treasury and business units. Crucial for correct RAROC and product profitability measurement.</div></div>
+  <div class="dc"><div class="dt">Risk Appetite Framework</div><div class="db">Board-approved statement defining the level and types of risk the institution is willing to accept in pursuit of its strategy. Cascades into quantitative limits for NPL, Gini minimums, score band caps, and loss tolerances.</div></div>
+  <div class="dc"><div class="dt">ICAAP</div><div class="db">Internal Capital Adequacy Assessment Process. Annual board-owned document demonstrating the bank has assessed all material risks and holds adequate capital under base and stressed scenarios.</div></div>
+</div>
+
+<h3>Stress Testing Framework</h3>
+<div class="ps">
+  <div class="st"><div class="sn">1</div><div class="sc"><div class="stl">Scenario Design</div><div class="sb">Define macroeconomic shocks: GDP contraction, unemployment spike, house price decline, interest rate jump. Regulatory scenarios (PRA ACS, EBA, Fed DFAST) provide standardised baselines. Banks add internal scenarios for idiosyncratic risks.</div></div></div>
+  <div class="st"><div class="sn">2</div><div class="sc"><div class="stl">Satellite Model Mapping</div><div class="sb">PD, LGD, and EAD satellite models translate macroeconomic variables into risk parameter changes. For example: +1% unemployment → +X basis points in PD. Typically estimated using regression on historical cycle data.</div></div></div>
+  <div class="st"><div class="sn">3</div><div class="sc"><div class="stl">Loss Projection</div><div class="sb">Stressed PD/LGD/EAD applied to the current portfolio to project losses over 3–5 years. Roll-rate or transition matrix models project staging movements and provision requirements under each scenario.</div></div></div>
+  <div class="st"><div class="sn">4</div><div class="sc"><div class="stl">Capital Impact Assessment</div><div class="sb">Projected losses deducted from starting CET1 capital. CET1 ratio trajectory assessed across scenarios. Management actions evaluated. Results inform ICAAP and Recovery &amp; Resolution Plan (RRP).</div></div></div>
+</div>
+
+<h3>TTC vs. PIT PD — Cyclicality</h3>
+<div class="cg">
+  <div class="cc"><div class="cch"><div class="ci2" style="background:var(--gl);">📅</div><h4>Through-the-Cycle (TTC) PD</h4></div><ul class="cl"><li>Average PD across a full economic cycle</li><li>Less volatile; does not spike in downturns</li><li>Required for Basel IRB regulatory capital</li><li>Prevents procyclical capital amplification</li><li>May understate risk in benign environments</li></ul></div>
+  <div class="cc"><div class="cch"><div class="ci2" style="background:var(--tl);">📈</div><h4>Point-in-Time (PIT) PD</h4></div><ul class="cl"><li>Current conditions-sensitive PD estimate</li><li>Incorporates forward macroeconomic outlook</li><li>Required for IFRS 9 ECL (multiple scenarios)</li><li>More volatile; rises sharply in recessions</li><li>Better reflects current risk for provisioning</li></ul></div>
+</div>
+</article>
+
+<!-- ═══ CH 8 ═══ -->
+<article class="ch" id="models">
+<a class="bt" href="#top">↑ Back to top</a>
+<header class="chh">
+  <p class="cn">Chapter 08</p>
+  <h2>Modern Credit Modelling</h2>
+  <p class="ci">Machine learning is transforming credit scoring and loss forecasting. However, model risk governance, explainability, and fairness remain paramount constraints in regulated lending.</p>
+</header>
+
+<h3>Traditional vs. ML Approaches</h3>
+<div class="dtw"><table>
+  <thead><tr><th>Method</th><th>Typical Gini</th><th>Explainability</th><th>Regulatory Acceptance</th><th>Best Use Case</th></tr></thead>
+  <tbody>
+    <tr><td>Logistic Regression + WOE</td><td class="mono">40–55%</td><td><span class="bx g">High</span></td><td><span class="bx g">Established</span></td><td>Primary application scorecard</td></tr>
+    <tr><td>Decision Tree / CART</td><td class="mono">35–50%</td><td><span class="bx g">High</span></td><td><span class="bx g">Established</span></td><td>Strategy segmentation, policy trees</td></tr>
+    <tr><td>Random Forest</td><td class="mono">55–65%</td><td><span class="bx am">Medium</span></td><td><span class="bx am">With validation</span></td><td>Feature engineering, challenger models</td></tr>
+    <tr><td>Gradient Boosting (XGBoost / LGB)</td><td class="mono">60–70%</td><td><span class="bx am">Medium</span></td><td><span class="bx am">With SHAP</span></td><td>Thin-file, fraud, collections scoring</td></tr>
+    <tr><td>Neural Network / Deep Learning</td><td class="mono">65–75%</td><td><span class="bx r">Low</span></td><td><span class="bx r">Case-by-case</span></td><td>Alternative data, unstructured inputs</td></tr>
+    <tr><td>Survival Analysis (Cox PH)</td><td class="mono">45–60%</td><td><span class="bx g">High</span></td><td><span class="bx g">Established</span></td><td>Lifetime PD, time-to-default modelling</td></tr>
+  </tbody>
+</table></div>
+
+<h3>Explainability Tools</h3>
+<div class="dg">
+  <div class="dc"><div class="dt">SHAP Values</div><div class="db">SHapley Additive exPlanations — assigns each feature a contribution to the model prediction using game-theoretic Shapley values. Provides both global feature importance and individual-level case explanation. Standard in ML credit model documentation.</div></div>
+  <div class="dc"><div class="dt">LIME</div><div class="db">Local Interpretable Model-agnostic Explanations. Fits a simple linear model locally around each prediction. Useful for generating adverse action notice reasons in ML-driven decisioning.</div></div>
+  <div class="dc"><div class="dt">Partial Dependence Plots</div><div class="db">Show marginal effect of one or two features on model output, averaged over all other features. Reveals monotonicity violations — e.g. higher income → higher risk — which are conceptually unsound and must be corrected.</div></div>
+  <div class="dc"><div class="dt">Adverse Action Notices</div><div class="db">US ECOA / Regulation B requirement to provide declined applicants with the specific top reasons for adverse action. Mandates feature-level explainability in any scoring model, including ML.</div></div>
+</div>
+
+<h3>Model Risk Management</h3>
+<p>Governed by PRA SS1/23 (UK) and Federal Reserve SR 11-7 (US). The model lifecycle has four mandatory phases:</p>
+<div class="ps">
+  <div class="st"><div class="sn" style="background:var(--blue);">D</div><div class="sc"><div class="stl">Development (Model Owner — 1st Line)</div><div class="sb">Full documentation: purpose, data lineage, methodology, assumptions, limitations, performance metrics. Includes out-of-time (OOT) and out-of-sample (OOS) validation. Champion-challenger framework defined before deployment.</div></div></div>
+  <div class="st"><div class="sn" style="background:var(--teal);">V</div><div class="sc"><div class="stl">Independent Validation (Model Risk — 2nd Line)</div><div class="sb">Second-line challenge of methodology, data, and results. Replication testing. Conceptual soundness review. Benchmarking against alternative models. Formal written opinion issued with findings and conditions.</div></div></div>
+  <div class="st"><div class="sn" style="background:var(--gold);">A</div><div class="sc"><div class="stl">Approval (Model Risk Committee)</div><div class="sb">Governance committee reviews validation opinion and approves model for production use with conditions. Material models require CRO or Board Risk Committee sign-off. Model registered in model inventory with tiering.</div></div></div>
+  <div class="st"><div class="sn" style="background:var(--green);">M</div><div class="sc"><div class="stl">Ongoing Monitoring (Monthly Performance Pack)</div><div class="sb">Gini decay, PSI, KS, calibration error tracked monthly. Trigger-based escalation for threshold breaches. Annual full review mandatory. Model risk tiering (Tier 1 = highest criticality) determines review frequency and depth.</div></div></div>
+</div>
+
+<h3>Fairness &amp; Bias</h3>
+<div class="call dan"><strong>Regulatory Risk — Protected Characteristics</strong><p>Credit models must not discriminate on protected characteristics (gender, race, religion, age, disability) under the Equality Act 2010 (UK), Equal Credit Opportunity Act (US), and equivalent legislation. Disparate impact testing must be embedded in model development and ongoing monitoring. Proxy discrimination — using features highly correlated with protected characteristics — is equally prohibited and must be tested.</p></div>
+<div class="dg">
+  <div class="dc"><div class="dt">Disparate Impact</div><div class="db">When a model disproportionately declines, prices higher, or assigns lower limits to a protected group, even without explicit use of the protected characteristic. Must be tested at development and in ongoing monitoring.</div></div>
+  <div class="dc"><div class="dt">4/5ths Rule (US)</div><div class="db">US EEOC guideline: adverse impact indicated if the selection rate for a protected group is less than 80% of the rate for the group with the highest selection rate. Widely applied in credit fairness testing.</div></div>
+  <div class="dc"><div class="dt">GDPR Article 22 (EU/UK)</div><div class="db">Right not to be subject solely to automated decision-making that produces significant effects. Requires the right to human review and meaningful explanation of automated credit decisions.</div></div>
+  <div class="dc"><div class="dt">Fairness Metrics</div><div class="db">Demographic parity, equalised odds, individual fairness, calibration within groups. No single metric is universally optimal — choice depends on the regulatory and ethical context of the specific model use.</div></div>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--bdr);margin:40px 0">
+
+<div class="hl"><h4>Key Regulatory &amp; Accounting References</h4>
+<ul class="ul">
+  <li><strong>Basel III / CRR2/CRR3 (EU):</strong> Capital requirements — risk weights, IRB approaches, Basel IV output floor (72.5% from 2028)</li>
+  <li><strong>IFRS 9 (IASB):</strong> Financial instruments — ECL model, three-stage classification, significant increase in credit risk</li>
+  <li><strong>ASC 326 / CECL (US GAAP):</strong> Current Expected Credit Loss — US equivalent of IFRS 9 ECL, effective for most banks from 2023</li>
+  <li><strong>EBA GL/2020/06:</strong> EBA Guidelines on loan origination and monitoring — origination standards, creditworthiness assessment</li>
+  <li><strong>FCA Consumer Duty (PS22/9):</strong> Good outcomes for retail customers — pricing, collections, and vulnerable customer treatment</li>
+  <li><strong>PRA SS1/23:</strong> Model risk management expectations for UK banks — lifecycle, governance, documentation</li>
+  <li><strong>Fed SR 11-7:</strong> US Federal Reserve supervisory guidance on model risk management — the foundational MRM framework</li>
+  <li><strong>ECOA / Regulation B (US):</strong> Equal Credit Opportunity Act — adverse action notices, prohibited discrimination bases</li>
+  <li><strong>GDPR / UK GDPR Art. 22:</strong> Right to explanation for automated decisions including credit scoring</li>
+</ul>
+</div>
+
+<div class="fn">
+  <p>This reference guide covers retail credit risk concepts as understood in mainstream banking practice. It is intended for educational and portfolio purposes only. Regulatory requirements vary by jurisdiction and are subject to change. Always refer to the most current regulatory texts and seek qualified legal, actuarial, or risk management advice for production implementations.</p>
+  <p style="margin-top:8px;color:var(--ink4)">Retail Credit Risk Reference · Portfolio Edition · 2025</p>
+</div>
+</article>
+</main>
+</body>
+</html>
