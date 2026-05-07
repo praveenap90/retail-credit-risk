@@ -2131,17 +2131,79 @@ flowchart TD
   </div>
 </section>
 
-<!-- 16: GLOSSARY -->
+<!-- 16: GLOSSARY FLASHCARDS -->
 <section class="section section-alt" id="glossary">
   <div class="container">
     <div class="section-header">
       <span class="section-tag">16</span>
-      <h2>Glossary of Terms</h2>
-      <p>Essential vocabulary for retail credit risk professionals — from entry-level to advanced practitioner.</p>
+      <h2>Glossary Flashcards</h2>
+      <p>Study mode — flip each card to reveal the definition. Filter by category, search by term, or use the deck navigator to practice one card at a time.</p>
     </div>
-    <div class="glossary-wrap">
-      <input type="text" id="glossarySearch" class="glossary-input" placeholder="Search terms&hellip;" autocomplete="off">
-      <div class="glossary-grid" id="glossaryGrid"></div>
+
+    <!-- Controls -->
+    <div class="fc-controls">
+      <div class="fc-controls-left">
+        <input type="text" id="fcSearch" class="fc-search" placeholder="Search terms…" autocomplete="off">
+        <div class="fc-filters" id="fcFilters">
+          <button class="fc-filter active" data-cat="all">All <span class="fc-filter-count" id="fc-count-all"></span></button>
+          <button class="fc-filter" data-cat="metrics">Metrics</button>
+          <button class="fc-filter" data-cat="models">Models</button>
+          <button class="fc-filter" data-cat="regulation">Regulation</button>
+          <button class="fc-filter" data-cat="products">Products</button>
+          <button class="fc-filter" data-cat="collections">Collections</button>
+        </div>
+      </div>
+      <div class="fc-controls-right">
+        <button class="fc-mode-btn active" id="fcModeGrid" title="Grid view">&#9783; Grid</button>
+        <button class="fc-mode-btn" id="fcModeDeck" title="Deck / study mode">&#9654; Study Deck</button>
+      </div>
+    </div>
+
+    <!-- GRID VIEW -->
+    <div id="fcGridView">
+      <div class="fc-grid" id="fcGrid"></div>
+      <div class="fc-empty" id="fcEmpty" style="display:none">No matching terms found.</div>
+    </div>
+
+    <!-- DECK / STUDY VIEW -->
+    <div id="fcDeckView" style="display:none">
+      <div class="fc-deck-wrap">
+        <div class="fc-deck-card" id="fcDeckCard">
+          <div class="fc-deck-inner" id="fcDeckInner">
+            <div class="fc-deck-front">
+              <div class="fc-deck-cat" id="fcDeckCat"></div>
+              <div class="fc-deck-term" id="fcDeckTerm"></div>
+              <div class="fc-deck-abbr" id="fcDeckAbbr"></div>
+              <div class="fc-deck-hint">Click to flip</div>
+            </div>
+            <div class="fc-deck-back">
+              <div class="fc-deck-def" id="fcDeckDef"></div>
+              <div class="fc-deck-back-term" id="fcDeckBackTerm"></div>
+            </div>
+          </div>
+        </div>
+        <div class="fc-deck-nav">
+          <button class="fc-nav-btn" id="fcPrev">&#8592; Prev</button>
+          <div class="fc-deck-progress">
+            <span id="fcCurrent">1</span> / <span id="fcTotal">44</span>
+            <div class="fc-progress-bar"><div class="fc-progress-fill" id="fcProgressFill"></div></div>
+          </div>
+          <button class="fc-nav-btn" id="fcNext">Next &#8594;</button>
+        </div>
+        <div class="fc-deck-actions">
+          <button class="fc-action-btn fc-shuffle" id="fcShuffle">&#9670; Shuffle</button>
+          <button class="fc-action-btn fc-restart" id="fcRestart">&#8635; Restart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="fc-stats" id="fcStats">
+      <span id="fcStatShowing"></span>
+      <span class="fc-stat-dot">&middot;</span>
+      <span>Click any card to flip</span>
+      <span class="fc-stat-dot">&middot;</span>
+      <span id="fcStatFlipped">0 flipped</span>
     </div>
   </div>
 </section>
