@@ -30,7 +30,8 @@
       <li><a href="#ews">EWS</a></li>
       <li><a href="#regulation">Regulation</a></li>
       <li><a href="#advanced">Advanced</a></li>
-      <li><a href="#cases">Case Studies</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#interview">Interview Q&amp;A</a></li>
       <li><a href="#glossary">Glossary</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle">&#9776;</button>
@@ -44,8 +45,8 @@
     <h1 class="hero-title">Retail<br><em>Credit Risk</em></h1>
     <p class="hero-sub">A comprehensive knowledge base spanning foundational concepts through advanced modeling techniques used across US consumer lending.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><span class="stat-num">14</span><span class="stat-label">Core Sections</span></div>
-      <div class="hero-stat"><span class="stat-num">100+</span><span class="stat-label">Key Concepts</span></div>
+      <div class="hero-stat"><span class="stat-num">16</span><span class="stat-label">Core Sections</span></div>
+      <div class="hero-stat"><span class="stat-num">150+</span><span class="stat-label">Key Concepts</span></div>
       <div class="hero-stat"><span class="stat-num">$1.7T</span><span class="stat-label">US Credit Card Market</span></div>
     </div>
     <a href="#basics" class="hero-cta">Begin Learning &darr;</a>
@@ -1619,11 +1620,522 @@ flowchart TD
   </div>
 </section>
 
-<!-- 14: GLOSSARY -->
+<!-- 15: INTERVIEW Q&A -->
+<section class="section" id="interview">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">15</span>
+      <h2>Interview Q&amp;A — Lending Knowledge</h2>
+      <p>Structured question-and-answer pairs for credit risk interview preparation. Covers foundational lending, collateral mechanics, loan structure risk, auto/RV products, and strategic monitoring — with model answers and key term callouts.</p>
+    </div>
+
+    <!-- Sub-tabs for the two categories -->
+    <div class="tabs-wrap" id="interviewTabs">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="iqa-foundational">Foundational Lending</button>
+        <button class="tab-btn" data-tab="iqa-collateral">Collateral Concepts</button>
+        <button class="tab-btn" data-tab="iqa-loanstructure">Loan Structure Risk</button>
+        <button class="tab-btn" data-tab="iqa-autorv">Auto / RV Products</button>
+        <button class="tab-btn" data-tab="iqa-strategy">Risk Strategy</button>
+      </div>
+
+      <!-- FOUNDATIONAL LENDING -->
+      <div class="tab-panel active" id="tab-iqa-foundational">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Core credit concepts every lending risk professional must articulate clearly. Click any card to reveal the model answer.</p>
+        <div class="iqa-grid" id="iqaFoundational">
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is a secured loan?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>A secured loan is backed by collateral, such as a vehicle in auto or RV lending. If the borrower defaults, the lender can repossess and liquidate the collateral to recover losses. The collateral reduces LGD relative to unsecured products.</p>
+              <div class="iqa-keywords"><span>Collateral</span><span>LGD</span><span>Repossession</span><span>Recovery</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is an unsecured loan?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>An unsecured loan is not backed by collateral, so lending decisions rely primarily on borrower creditworthiness, income, and repayment behavior. Loss recovery depends entirely on collections — there is no asset to liquidate.</p>
+              <div class="iqa-keywords"><span>Creditworthiness</span><span>PD-driven</span><span>Collections</span><span>No collateral</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is the difference between secured and unsecured lending risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>In secured lending, risk depends on both borrower repayment ability <em>and</em> collateral value. LGD is mitigated by asset recovery. In unsecured lending, risk is driven primarily by probability of default because there is no collateral recovery — LGD is typically 80–100%.</p>
+              <div class="iqa-compare">
+                <div class="iqa-compare-col iqa-col-blue"><div class="iqa-compare-title">Secured</div><ul><li>PD + LTV both matter</li><li>LGD reduced by collateral</li><li>Lower rates typical</li><li>Repossession as backstop</li></ul></div>
+                <div class="iqa-compare-col iqa-col-red"><div class="iqa-compare-title">Unsecured</div><ul><li>PD is primary driver</li><li>LGD 80–100%</li><li>Higher rates to compensate</li><li>Collections only recovery</li></ul></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why are secured loan interest rates generally lower?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Because collateral reduces lender risk and potential loss severity. The lender has a recovery mechanism if the borrower defaults, so the expected loss is lower — and lower expected loss translates directly into lower required return (APR).</p>
+              <div class="iqa-formula">APR = Cost of Funds + Expected Loss + OpEx + Profit Margin<br>Lower EL → Lower APR</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What are the key components of credit risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>The three quantitative components are Probability of Default (PD), Exposure at Default (EAD), and Loss Given Default (LGD). Together they produce Expected Loss: <strong>EL = PD × LGD × EAD</strong>. In secured lending, collateral value significantly impacts LGD. In unsecured, PD and EAD are the dominant drivers.</p>
+              <div class="iqa-formula">Expected Loss = PD × LGD × EAD</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is delinquency?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Delinquency refers to missed or late payments and is measured in days past due (DPD). Standard reporting buckets are 30, 60, and 90+ DPD. It is reported to credit bureaus starting at 30 DPD and represents an early signal of borrower stress and potential default.</p>
+              <div class="iqa-keywords"><span>30 DPD</span><span>60 DPD</span><span>90+ DPD</span><span>Bureau Reporting</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What are roll rates?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Roll rates measure how accounts migrate between delinquency stages — for example, what percentage of 30 DPD accounts "roll" to 60 DPD in the next period. They are a key tool for forecasting future losses and evaluating collections effectiveness. Rising roll rates are a leading indicator of NCO deterioration.</p>
+              <div class="iqa-formula">Roll Rate = Accounts moving to next DPD bucket / Accounts in current bucket</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why are early-stage delinquencies important?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>30 DPD is an early warning indicator of borrower stress — it helps identify risk before it develops into severe delinquency (90+ DPD) or charge-off. Acting early maximizes cure rates, reduces loss severity, and enables proactive IFRS 9 Stage 2 migration before the loss is inevitable. Early intervention is significantly cheaper than late-stage collections.</p>
+              <div class="iqa-keywords"><span>EWI</span><span>SICR Trigger</span><span>Stage 2</span><span>Cure Rate</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is charge-off?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>A charge-off occurs when a lender determines a loan is unlikely to be collected and removes it from the balance sheet as a recognized loss. For credit cards, the regulatory threshold is 180 DPD. For most closed-end consumer loans, it is 120 DPD. Importantly, charge-off is an accounting event — recovery efforts continue afterward.</p>
+              <div class="iqa-keywords"><span>180 DPD (Cards)</span><span>120 DPD (Installment)</span><span>NCO</span><span>Accounting Loss</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is recovery rate?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Recovery rate measures the percentage of charged-off balances recovered through collections, collateral liquidation, or debt sale. It is the complement of LGD: <strong>Recovery Rate = 1 − LGD</strong>. Secured products have higher recovery rates due to collateral. For unsecured credit cards, recovery is typically 15–25% of charged-off balances.</p>
+              <div class="iqa-formula">Recovery Rate = 1 − LGD<br>Net Charge-Off = Gross C/O − Recoveries</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- COLLATERAL CONCEPTS -->
+      <div class="tab-panel" id="tab-iqa-collateral">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Collateral mechanics, LTV risk, vehicle depreciation, and recovery dynamics specific to secured lending products (auto, RV, mortgage).</p>
+        <div class="iqa-grid" id="iqaCollateral">
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is collateral important in secured lending?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Collateral reduces loss severity because the lender can repossess and sell the asset if the borrower defaults. This backstop lowers LGD, which in turn lowers expected loss and allows the lender to offer lower interest rates. Without collateral, lenders bear the full loss on default.</p>
+              <div class="iqa-keywords"><span>LGD Reduction</span><span>Repossession</span><span>Loss Severity</span><span>Lower APR</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is Loan-to-Value (LTV)?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>LTV measures the loan amount relative to the collateral value. Higher LTVs indicate higher risk because the borrower has less equity in the asset. If a $30,000 vehicle secures a $27,000 loan, the LTV is 90% — leaving only a 10% equity buffer before the loan is underwater.</p>
+              <div class="iqa-formula">LTV = Loan Balance / Collateral Value<br>e.g. $27,000 / $30,000 = 90% LTV</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is high LTV risky?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>High LTV increases both default risk and loss severity simultaneously. Borrowers with little equity have less "skin in the game" and may be more willing to walk away ("strategic default"). If the asset depreciates, a high LTV loan quickly becomes underwater, meaning the lender cannot fully recover the outstanding balance through repossession.</p>
+              <div class="iqa-compare">
+                <div class="iqa-compare-col iqa-col-blue"><div class="iqa-compare-title">Low LTV (&lt;80%)</div><ul><li>Borrower has equity cushion</li><li>Higher motivation to pay</li><li>Recovery likely covers balance</li><li>Lower expected loss</li></ul></div>
+                <div class="iqa-compare-col iqa-col-red"><div class="iqa-compare-title">High LTV (&gt;90%)</div><ul><li>Minimal equity buffer</li><li>Strategic default risk rises</li><li>Depreciation creates shortfall</li><li>Higher LGD on default</li></ul></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">How does vehicle depreciation affect risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>As vehicles depreciate, collateral value declines, which can increase loss severity if repossession occurs. A new vehicle loses approximately 20% of its value in the first year. Extended loan terms (72–84 months) are particularly risky because the balance may exceed vehicle value for several years — creating "negative equity" that raises LGD and strategic default risk.</p>
+              <div class="iqa-keywords"><span>Depreciation Curve</span><span>Negative Equity</span><span>Extended Terms</span><span>Residual Value</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why are RV loans riskier than auto loans?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>RV loans involve larger balances, faster depreciation, lower resale market liquidity, and more discretionary purchase behavior — all of which increase risk. In an economic downturn, RV purchases are typically among the first discretionary items borrowers stop prioritizing. Repossession and resale are more operationally complex and time-consuming, reducing net recovery.</p>
+              <div class="iqa-keywords"><span>Discretionary Purchase</span><span>Depreciation</span><span>Liquidity Risk</span><span>Larger Balances</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What happens during repossession?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>If a borrower defaults, the lender may repossess the vehicle — typically after 60–90 DPD depending on state law. The asset is sold through auction (Manheim, ADESA) or dealer channels. Proceeds are applied toward the outstanding balance. Any remaining deficiency balance is the lender's realized loss. Repossession costs (transport, storage, auction fees) typically run $500–$1,500 and reduce net recovery.</p>
+              <div class="iqa-keywords"><span>Auction</span><span>Deficiency Balance</span><span>Repossession Costs</span><span>State Law</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is residual value risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Residual value risk refers to uncertainty around the future market value of collateral, which directly impacts recoveries in the event of default. It is particularly relevant for lease-end vehicles, RVs, and long-term auto loans. Macro shocks (e.g., a spike in used car supply, fuel price changes affecting SUV/truck values) can cause broad-based residual value declines, increasing LGD across an entire portfolio.</p>
+              <div class="iqa-keywords"><span>Collateral Valuation</span><span>Market Volatility</span><span>LGD Impact</span><span>Portfolio LTV</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why are recovery rates important in secured lending?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Recovery rates directly determine LGD and net charge-off rates. A 10-point improvement in recovery rate reduces LGD by 10 points — which on a large portfolio translates into tens of millions of dollars in reduced losses. Lenders actively manage recovery through optimized auction strategies, condition-of-vehicle programs, and deficiency collection pursuit. In secured lending, recovery analytics is a core profit lever.</p>
+              <div class="iqa-formula">LGD = 1 − Recovery Rate<br>NCO = Gross Charge-Off × LGD</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- LOAN STRUCTURE RISK -->
+      <div class="tab-panel" id="tab-iqa-loanstructure">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Loan term dynamics, negative equity, affordability, and underwriting discipline in structured consumer lending.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why are longer loan terms riskier?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Longer terms slow equity build-up and may leave borrowers underwater for extended periods, increasing both default risk and loss severity. As collateral depreciates faster than the balance amortizes, LTV remains elevated — meaning a default in month 24 of an 84-month loan carries much higher LGD than the same default on a 48-month term.</p>
+              <div class="iqa-keywords"><span>Slow Amortization</span><span>Negative Equity</span><span>Elevated LTV</span><span>LGD Risk</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What risks exist in 84-month auto loans?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>84-month loans increase exposure to depreciation risk because the vehicle value falls faster than the balance amortizes for the first 24–36 months. They may also indicate affordability concerns — if a borrower needs 84 months to reach a manageable payment, their DTI is likely stretched. Portfolio concentration in extended terms is a key risk appetite metric to monitor.</p>
+              <div class="iqa-formula">Depreciation outpaces amortization in months 1–36 of an 84-month loan → Negative equity zone</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">How does monthly payment affect risk?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Lower monthly payments improve short-term affordability and reduce early DPD risk, but if achieved by extending loan terms excessively, they increase long-term portfolio risk through prolonged negative equity exposure. The optimal underwriting approach balances payment affordability (PTI ratio) with term discipline — accepting slightly higher payments to preserve collateral protection.</p>
+              <div class="iqa-keywords"><span>PTI Ratio</span><span>Affordability</span><span>Term Discipline</span><span>Negative Equity</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is borrower affordability important?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Affordability directly impacts repayment ability and is the primary driver of delinquency risk, particularly during economic stress. When a borrower's income falls or expenses rise unexpectedly, unaffordable debt obligations are the first to be missed. Verified income, stable employment, and low DTI are the strongest signals of sustained repayment capacity across the loan life.</p>
+              <div class="iqa-keywords"><span>DTI</span><span>Income Verification</span><span>Repayment Capacity</span><span>Stress Sensitivity</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is negative equity?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Negative equity ("being underwater") occurs when the borrower owes more than the collateral is worth — i.e., LTV exceeds 100%. This increases both default incentives (the borrower has no equity to protect) and loss severity (the lender cannot recover the full balance through repossession). It is most common in early loan life when depreciation outpaces amortization, and in extended-term products.</p>
+              <div class="iqa-formula">Negative Equity = Loan Balance > Collateral Value → LTV > 100%</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">How do down payments impact risk?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Larger down payments reduce the initial LTV, improve borrower equity from day one, and lower both default risk and loss severity. A 20% down payment creates immediate positive equity that buffers against early depreciation. It also signals borrower commitment and financial discipline. Down payment requirements are a key credit policy lever — tightening them reduces LGD at the cost of lower approval rates.</p>
+              <div class="iqa-keywords"><span>LTV Reduction</span><span>Equity Buffer</span><span>Credit Policy</span><span>Approval Rate Trade-off</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why does underwriting matter in secured lending?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Strong underwriting ensures borrowers have both the capacity (DTI, income, employment) and willingness (credit history, payment behavior) to repay, while maintaining appropriate collateral protection through LTV discipline. Underwriting is the primary control that determines the risk quality of every vintage — poor underwriting compounds over time and is difficult to remediate after origination.</p>
+              <div class="iqa-compare">
+                <div class="iqa-compare-col iqa-col-blue"><div class="iqa-compare-title">Willingness to Pay</div><ul><li>Credit score / bureau data</li><li>Payment history</li><li>Derogatory marks</li><li>Time since last delinquency</li></ul></div>
+                <div class="iqa-compare-col iqa-col-red"><div class="iqa-compare-title">Ability to Pay</div><ul><li>Verified income (W-2, bank stmt)</li><li>DTI &amp; PTI ratios</li><li>Employment stability</li><li>Reserves / capital</li></ul></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What role does debt-to-income (DTI) play?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>DTI measures a borrower's total monthly debt obligations relative to gross monthly income, and is the primary indicator of repayment capacity. A high DTI indicates the borrower is already heavily leveraged — any income shock or new expense can trigger delinquency. In auto lending, DTI thresholds typically cap at 40–50%; in mortgage QM lending, the hard cap is 43%.</p>
+              <div class="iqa-formula">DTI = Total Monthly Debt Payments / Gross Monthly Income<br>Auto threshold: ≤40–50% &nbsp;|&nbsp; Mortgage QM: ≤43%</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- AUTO / RV PRODUCTS -->
+      <div class="tab-panel" id="tab-iqa-autorv">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Product-specific risk dynamics in auto, RV, and motor lending — portfolio metrics, vintage analysis, and growth strategy.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card">
+            <div class="iqa-q">What are the major risks in auto lending?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Key risks include borrower default risk (driven by PD and affordability), vehicle depreciation risk (LGD increases as collateral value falls), high LTV exposure from extended terms or negative equity rollovers, economic sensitivity (auto loans are one of the first obligations to go delinquent in recessions), and declining recovery values in weak used-car markets.</p>
+              <div class="iqa-keywords"><span>Default Risk</span><span>Depreciation</span><span>LTV Exposure</span><span>Recovery Values</span><span>Economic Sensitivity</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What portfolio metrics would you monitor in auto lending?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>I would monitor delinquency rates (30/60/90+ DPD), roll rates between buckets, net charge-off rates, recovery rates by channel, LTV distribution (watch for creep in high-LTV mix), vintage performance curves, and utilization of underwriting exceptions. Exception rates are particularly important — rising exceptions signal policy stretch that shows up in losses 12–18 months later.</p>
+              <div class="iqa-keywords"><span>DPD Rates</span><span>Roll Rates</span><span>NCO</span><span>Recovery Rate</span><span>LTV Distribution</span><span>Exception Rate</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is vintage analysis?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Vintage analysis tracks loan performance based on origination period (month or quarter), plotting cumulative loss rates over time. It enables comparison of risk quality across different origination cohorts — identifying whether recent vintages are performing better or worse than seasoned ones at the same loan age, which directly reveals whether underwriting standards are tightening or loosening.</p>
+              <div class="iqa-formula">Vintage NCO at Month N = Cumulative C/O from vintage / Original balance</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why are subprime auto loans higher risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Subprime borrowers (typically FICO &lt;620) have weaker credit histories, higher PDs, and greater income volatility. They are also more likely to receive extended terms and higher LTV loans as lenders try to hit affordable payment targets. This creates a compounding risk: weaker repayment capacity combined with higher LTV and longer exposure to depreciation risk — resulting in default rates 3–5× the prime segment.</p>
+              <div class="iqa-compare">
+                <div class="iqa-compare-col iqa-col-blue"><div class="iqa-compare-title">Prime (&gt;660 FICO)</div><ul><li>Lower PD (&lt;3%)</li><li>Shorter terms preferred</li><li>Lower LTV typical</li><li>More stable income</li></ul></div>
+                <div class="iqa-compare-col iqa-col-red"><div class="iqa-compare-title">Subprime (&lt;620 FICO)</div><ul><li>Higher PD (8–20%)</li><li>Extended terms common</li><li>Higher LTV exposure</li><li>Income volatility risk</li></ul></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">How would you safely grow an auto portfolio?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>I would target growth in lower-risk segments with demonstrated strong vintage performance — prime borrowers, lower LTV originations, shorter terms, and established dealer partners with proven collateral quality. I would maintain strict LTV thresholds, enforce exception rate limits, expand monitoring cadence during growth phases, and use champion/challenger testing before broad policy changes. Growth without monitoring infrastructure is a recipe for delayed loss recognition.</p>
+              <div class="iqa-keywords"><span>Disciplined Origination</span><span>LTV Thresholds</span><span>Exception Control</span><span>Vintage Monitoring</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What factors impact recovery values?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Recovery values are driven by vehicle condition, mileage, age, make/model market demand, prevailing used-car market prices, and repossession timing. A vehicle repossessed at 12 months DPD in poor condition during a weak used-car market will recover far less than one repossessed at 90 DPD in good condition. Lenders optimize recovery by investing in refurbishment, targeted auction channel selection, and faster repossession timelines.</p>
+              <div class="iqa-keywords"><span>Vehicle Condition</span><span>Mileage</span><span>Market Demand</span><span>Timing</span><span>Auction Channel</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is segmentation important in portfolio monitoring?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Without segmentation, portfolio-level metrics can mask concentrations of deteriorating risk. A stable aggregate delinquency rate can hide severe stress in one vintage, geography, or score band. Segmentation by risk tier, loan term, LTV band, dealer channel, and vintage allows targeted diagnosis — identifying exactly which segments are driving adverse trends and enabling precise strategy responses rather than blunt portfolio-wide actions.</p>
+              <div class="iqa-keywords"><span>Risk Tier</span><span>Vintage</span><span>Geography</span><span>LTV Band</span><span>Dealer Channel</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is a prime vs subprime borrower?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Prime borrowers (typically FICO 660+) have established credit histories, stable income, and low default probabilities — they qualify for standard pricing and terms. Subprime borrowers (FICO &lt;620) have weaker credit profiles, higher delinquency probability, and greater economic sensitivity. Near-prime (620–659) sits between — manageable risk but requires tighter LTV and term discipline to maintain acceptable loss rates.</p>
+              <div class="iqa-keywords"><span>Prime: FICO 660+</span><span>Near-prime: 620–659</span><span>Subprime: &lt;620</span><span>Risk-Based Pricing</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CREDIT RISK STRATEGY & MONITORING -->
+      <div class="tab-panel" id="tab-iqa-strategy">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Strategic thinking, portfolio investigation, business challenge, and monitoring frameworks for credit risk professionals in a second-line or strategy role.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card">
+            <div class="iqa-q">How would you investigate rising delinquency?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>I would segment the portfolio by risk tier, vintage, LTV band, loan term, geography, and dealer/channel to identify where deterioration is concentrated. Once localized, I would analyze root causes — underwriting drift, macro conditions, collections effectiveness, or product mix shift — and recommend targeted strategy adjustments (tighter underwriting in affected segments, enhanced collections, or limit actions) rather than blunt portfolio-wide changes.</p>
+              <div class="iqa-keywords"><span>Segmentation</span><span>Root Cause</span><span>Vintage Analysis</span><span>Targeted Response</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What would rising 30 DPD indicate?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Rising 30 DPD is typically an early warning sign of borrower stress — the leading indicator that precedes 60+ DPD and charge-off by 60–120 days. It may indicate affordability deterioration (income shocks, rate sensitivity), underwriting loosening in recent vintages, or macro economic headwinds affecting a specific segment or geography. Early action at 30 DPD is significantly cheaper than intervention at 90+ DPD.</p>
+              <div class="iqa-keywords"><span>EWI Signal</span><span>Leading Indicator</span><span>Affordability</span><span>Underwriting Quality</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What does increasing roll rate from 30 to 60 DPD mean?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>An increasing 30→60 DPD roll rate means early-stage delinquency is not curing effectively — borrowers who miss one payment are increasingly likely to miss a second. This may indicate weaknesses in collections contact strategy, borrowers with structural affordability problems (not just a one-time payment timing issue), or worsening economic conditions reducing cure ability. It is a key leading indicator that NCO will rise in 60–90 days.</p>
+              <div class="iqa-formula">If Roll Rate 30→60 rises from 50% to 65%:<br>→ NCO forecast must be revised upward<br>→ CECL Stage 2 population likely increasing</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">How would you reduce charge-offs?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Reducing charge-offs requires intervention across three stages: origination (tighten underwriting to reduce PD of new accounts), early detection (improve EWI triggers and proactive outreach to 1–29 DPD accounts), and collections effectiveness (optimize right-party contact, offer hardship programs earlier, and use data-driven segmentation to prioritize effort). Charge-off is the symptom — the cure is upstream at underwriting and early collections.</p>
+              <div class="iqa-keywords"><span>Underwriting Discipline</span><span>EWI Triggers</span><span>Cure Rate</span><span>Collections Strategy</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">How do you balance growth and risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Sustainable growth is achieved by identifying lower-risk growth opportunities — prime segments, geographies with strong economic fundamentals, dealer partners with proven collateral quality — while maintaining disciplined underwriting standards and strong monitoring controls. Growth without corresponding monitoring infrastructure creates delayed loss recognition. Risk appetite limits on concentration, LTV, and exception rates are the guardrails that allow confident growth.</p>
+              <div class="iqa-keywords"><span>Risk Appetite</span><span>Disciplined Underwriting</span><span>Monitoring Infrastructure</span><span>RAROC</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">How would you challenge a business strategy?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>I would use data-driven analysis to validate the strategy's underlying assumptions — testing whether the proposed risk/return trade-off holds across different economic scenarios and customer segments. I would identify gaps (e.g., concentration risk not accounted for), unintended outcomes (e.g., approval rate growth in subprime), and recommend targeted improvements supported by measurable evidence. Effective challenge is constructive — proposing alternatives, not just identifying problems.</p>
+              <div class="iqa-keywords"><span>Assumption Testing</span><span>Scenario Analysis</span><span>Constructive Challenge</span><span>Second Line</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is continuous monitoring important?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Continuous monitoring enables early identification of emerging risks — before they materialize as charge-offs. The cost of intervention rises exponentially with delinquency severity: acting at 1–29 DPD is 5–10× cheaper than at 90+ DPD. Monitoring also validates that underwriting models, collections strategies, and risk policies are performing as intended — and triggers recalibration before model drift causes systematic losses.</p>
+              <div class="iqa-keywords"><span>Early Intervention</span><span>Model Performance</span><span>Policy Validation</span><span>PSI / CSI Tracking</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What KPIs are most important in secured lending?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>The most important KPIs in secured lending are: delinquency rates (30/60/90+ DPD as leading indicators), roll rates (predictive of future NCO), net charge-off rate (primary loss metric), recovery rates (determines LGD and net loss), LTV distribution (collateral protection health), vintage performance curves (underwriting quality over time), and exception rate (policy discipline indicator). Together they provide a complete picture of credit quality from origination to loss.</p>
+              <div class="iqa-keywords"><span>DPD Rates</span><span>Roll Rates</span><span>NCO</span><span>Recovery Rate</span><span>LTV Distribution</span><span>Vintage Performance</span><span>Exception Rate</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <h3 class="subsection-title">Interview Preparation Tips</h3>
+      <div class="card-grid-3">
+        <div class="card">
+          <h4>Structure Every Answer</h4>
+          <p>Lead with a crisp definition, then explain the risk implication, then give a quantitative reference (LTV %, DPD bucket, NCO rate). Avoid open-ended answers — always land on a "so what" for the lender.</p>
+        </div>
+        <div class="card">
+          <h4>Connect Concepts</h4>
+          <p>Interviewers reward candidates who link concepts: "High LTV → if vehicle depreciates → LGD rises → NCO rate increases → CECL reserve must reflect updated collateral values." Chains of causation show depth.</p>
+        </div>
+        <div class="card">
+          <h4>Use the EL Formula</h4>
+          <p>EL = PD × LGD × EAD is your universal anchor. Every question about risk, pricing, provisioning, or stress testing connects to at least one of these three inputs. Fluency with this framework signals technical readiness.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16: GLOSSARY -->
 <section class="section section-alt" id="glossary">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">14</span>
+      <span class="section-tag">16</span>
       <h2>Glossary of Terms</h2>
       <p>Essential vocabulary for retail credit risk professionals — from entry-level to advanced practitioner.</p>
     </div>
@@ -1648,7 +2160,8 @@ flowchart TD
         <a href="#basics">Basics</a><a href="#five-cs">5 C's</a><a href="#metrics">Metrics</a><a href="#models">Models</a>
         <a href="#scorecard">Scorecard</a><a href="#lifecycle">Lifecycle</a><a href="#portfolio">Portfolio</a>
         <a href="#collections">Collections</a><a href="#stress">Stress</a><a href="#ews">EWS</a>
-        <a href="#regulation">Regulation</a><a href="#advanced">Advanced</a><a href="#cases">Cases</a><a href="#glossary">Glossary</a>
+        <a href="#regulation">Regulation</a><a href="#advanced">Advanced</a><a href="#cases">Cases</a>
+        <a href="#interview">Interview Q&amp;A</a><a href="#glossary">Glossary</a>
       </div>
     </div>
     <div class="footer-copy">
