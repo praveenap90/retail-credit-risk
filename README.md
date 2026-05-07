@@ -6,7 +6,7 @@
 
 ---
 
-## What's Covered
+F## What's Covered
 
 | Section | Topics |
 |---------|--------|
@@ -50,7 +50,7 @@ git push -u origin main
 
 Your site will be live at:
 ```
-https://praveenap90.github.io/retail-credit-risk/
+https://YOUR_USERNAME.github.io/retail-credit-risk/
 ```
 
 ---
