@@ -155,3 +155,10 @@ document.querySelectorAll('.case-btn').forEach(btn => {
     }
   });
 });
+
+// ===== INTERVIEW Q&A CARD TOGGLE =====
+document.querySelectorAll('.iqa-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('open');
+  });
+});
