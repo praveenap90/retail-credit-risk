@@ -2,11 +2,11 @@
 
 > A comprehensive knowledge base for retail credit risk in the US, from basic terminology through advanced modeling and regulatory concepts. Built as a portfolio reference site using GitHub Pages.
 
-[Github Page](https://praveenap90.github.io/retail-credit-risk/)
+**Live Site:** `https://[your-username].github.io/retail-credit-risk/`
 
 ---
 
-F## What's Covered
+## What's Covered
 
 | Section | Topics |
 |---------|--------|
