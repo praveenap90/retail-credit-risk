@@ -46,7 +46,7 @@
     <p class="hero-sub">A comprehensive knowledge base spanning foundational concepts through advanced modeling techniques used across US consumer lending.</p>
     <div class="hero-stats">
       <div class="hero-stat"><span class="stat-num">16</span><span class="stat-label">Core Sections</span></div>
-      <div class="hero-stat"><span class="stat-num">150+</span><span class="stat-label">Key Concepts</span></div>
+      <div class="hero-stat"><span class="stat-num">156</span><span class="stat-label">Interview Q&amp;As</span></div>
       <div class="hero-stat"><span class="stat-num">$1.7T</span><span class="stat-label">US Credit Card Market</span></div>
     </div>
     <a href="#basics" class="hero-cta">Begin Learning &darr;</a>
@@ -1626,7 +1626,7 @@ flowchart TD
     <div class="section-header">
       <span class="section-tag">15</span>
       <h2>Interview Q&amp;A — Lending Knowledge</h2>
-      <p>Structured question-and-answer pairs for credit risk interview preparation. Covers foundational lending, collateral mechanics, loan structure risk, auto/RV products, and strategic monitoring — with model answers and key term callouts.</p>
+      <p>156 structured Q&amp;As across 18 topic areas — from credit risk fundamentals to technical data engineering, model governance, and explainable AI. Click any card to reveal the model answer with key terms, formulas, and comparison panels.</p>
     </div>
 
     <!-- Sub-tabs for the two categories -->
@@ -1637,6 +1637,19 @@ flowchart TD
         <button class="tab-btn" data-tab="iqa-loanstructure">Loan Structure Risk</button>
         <button class="tab-btn" data-tab="iqa-autorv">Auto / RV Products</button>
         <button class="tab-btn" data-tab="iqa-strategy">Risk Strategy</button>
+        <button class="tab-btn" data-tab="iqa-crfund">CR Fundamentals</button>
+        <button class="tab-btn" data-tab="iqa-underwriting">Underwriting</button>
+        <button class="tab-btn" data-tab="iqa-delinquency">Delinquency</button>
+        <button class="tab-btn" data-tab="iqa-monitoring">Portfolio Monitoring</button>
+        <button class="tab-btn" data-tab="iqa-decisioning">Strategy &amp; Decisioning</button>
+        <button class="tab-btn" data-tab="iqa-fraud">Fraud &amp; Operational</button>
+        <button class="tab-btn" data-tab="iqa-crmod">CR Modeling</button>
+        <button class="tab-btn" data-tab="iqa-statml">Statistical &amp; ML</button>
+        <button class="tab-btn" data-tab="iqa-validation">Model Validation</button>
+        <button class="tab-btn" data-tab="iqa-bureau">Bureau &amp; Scorecard</button>
+        <button class="tab-btn" data-tab="iqa-portanalytics">Portfolio Analytics</button>
+        <button class="tab-btn" data-tab="iqa-techdata">Data &amp; Engineering</button>
+        <button class="tab-btn" data-tab="iqa-regov">Regulation &amp; Governance</button>
       </div>
 
       <!-- FOUNDATIONAL LENDING -->
@@ -2110,9 +2123,747 @@ flowchart TD
 
         </div>
       </div>
+
+      <!-- CREDIT RISK FUNDAMENTALS -->
+      <div class="tab-panel" id="tab-iqa-crfund">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Core credit risk concepts — the building blocks that underpin every model, policy, and portfolio decision in lending.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is credit risk?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Credit risk is the possibility that a borrower will fail to meet repayment obligations, resulting in financial loss to the lender. It is quantified through three components — PD (probability of default), LGD (loss given default), and EAD (exposure at default) — which together produce Expected Loss: EL = PD × LGD × EAD.</p>
+              <div class="iqa-keywords"><span>Default</span><span>Financial Loss</span><span>PD × LGD × EAD</span><span>Lender Exposure</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is Probability of Default (PD)?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>PD measures the likelihood that a borrower will default over a specific time horizon — typically 12 months for application scoring, or lifetime for CECL provisioning. It is estimated using credit scores, behavioral data, and statistical models (logistic regression, scorecards). Higher PD = higher risk = higher required return or tighter underwriting.</p>
+              <div class="iqa-formula">PD = Historical Defaults / Total Accounts in segment<br>Target: segmented by score band, product, vintage</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is Loss Given Default (LGD)?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>LGD represents the percentage of exposure a lender expects to lose after accounting for recoveries once a borrower defaults. LGD = 1 − Recovery Rate. In secured lending, collateral reduces LGD significantly. Unsecured products typically have LGD of 75–100% since there is no asset to liquidate.</p>
+              <div class="iqa-formula">LGD = 1 − Recovery Rate<br>Secured auto: ~40–60% &nbsp;|&nbsp; Unsecured card: ~75–90%</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is Exposure at Default (EAD)?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>EAD is the total amount the lender is exposed to when a borrower defaults. For installment loans (auto, mortgage), EAD is the outstanding balance. For revolving credit (cards, HELOCs), EAD includes drawn balance plus a Credit Conversion Factor applied to the undrawn limit — because borrowers often draw down heavily before defaulting.</p>
+              <div class="iqa-formula">EAD (revolving) = Balance + CCF × Unused Limit<br>CCF typically 50–80% for credit cards</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">How is Expected Loss calculated?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Expected Loss is calculated as PD × LGD × EAD. It represents the average anticipated credit loss from a portfolio over a defined horizon. EL is used in CECL provisioning (to set the allowance), risk-based pricing (to determine the minimum APR needed to cover losses), and economic capital allocation across products.</p>
+              <div class="iqa-formula">EL = PD × LGD × EAD<br>e.g. PD 5% × LGD 60% × EAD $20,000 = $600 expected loss</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is unexpected loss?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Unexpected loss (UL) represents the volatility around expected losses — the risk that actual losses will exceed the average EL. Banks hold regulatory capital (CET1 buffer) specifically to absorb unexpected losses and remain solvent under stress. UL drives economic capital requirements: a higher-volatility portfolio requires more capital held in reserve.</p>
+              <div class="iqa-keywords"><span>Loss Volatility</span><span>Economic Capital</span><span>CET1 Buffer</span><span>Stress Testing</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is risk appetite?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Risk appetite defines the amount and type of risk an organization is willing to accept to achieve its business objectives. It is formally documented in a Risk Appetite Statement and translated into quantitative limits: maximum NCO rate, DPD thresholds, concentration limits, and RAROC hurdle rates. Risk appetite governs underwriting cutoffs, portfolio mix decisions, and capital planning.</p>
+              <div class="iqa-keywords"><span>Risk Appetite Statement</span><span>NCO Limits</span><span>Concentration Limits</span><span>RAROC Hurdle</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is concentration risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Concentration risk occurs when a portfolio is overly exposed to a specific segment, geography, borrower type, or product. If conditions deteriorate in that area, losses can be disproportionately large. Lenders manage concentration risk through exposure limits (e.g., max 20% in any single state), diversification across products, and stress testing correlated scenarios.</p>
+              <div class="iqa-keywords"><span>Geographic Concentration</span><span>Sector Concentration</span><span>Exposure Limits</span><span>Correlated Risk</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is portfolio diversification?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Diversification reduces credit risk by spreading exposure across different borrower segments, products, geographies, and industries so that losses in one area do not overwhelm the portfolio. It reduces unexpected loss (capital requirement) without necessarily reducing expected loss per account. Over-diversification into unfamiliar segments, however, can introduce adverse selection risk.</p>
+              <div class="iqa-keywords"><span>Segment Spread</span><span>Geographic Mix</span><span>Correlated Loss Reduction</span><span>UL Reduction</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is adverse selection?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Adverse selection occurs when higher-risk borrowers are more likely to seek credit — particularly in products with easy access or looser underwriting. If a lender loosens criteria or raises credit limits, higher-risk borrowers disproportionately take up the offer, increasing portfolio average PD. It is a key risk in pre-approved offers, direct mail campaigns, and subprime product launches.</p>
+              <div class="iqa-keywords"><span>Higher-Risk Uptake</span><span>Portfolio PD Creep</span><span>Looser Underwriting</span><span>Pre-Approval Risk</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- UNDERWRITING & BORROWER ASSESSMENT -->
+      <div class="tab-panel" id="tab-iqa-underwriting">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Underwriting frameworks, borrower assessment tools, and the policies that govern credit decisions at origination.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card">
+            <div class="iqa-q">What factors are evaluated during underwriting?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Underwriting evaluates credit score (willingness to pay), income and DTI (capacity to pay), repayment history and derogatory marks (track record), collateral value and LTV (loss protection), employment stability (income durability), and affordability under different payment scenarios. Together these map to the 5 C's: Character, Capacity, Capital, Collateral, and Conditions.</p>
+              <div class="iqa-keywords"><span>5 C's Framework</span><span>FICO Score</span><span>DTI</span><span>LTV</span><span>Employment Stability</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is debt-to-income (DTI) important?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>DTI helps assess a borrower's repayment capacity by comparing total monthly debt obligations to gross monthly income. A high DTI means the borrower is already heavily committed — any income disruption can trigger delinquency. It is the primary capacity measure in mortgage underwriting (QM cap: 43%) and is also key in auto lending, where thresholds typically sit at 40–50%.</p>
+              <div class="iqa-formula">DTI = Monthly Debt Payments / Gross Monthly Income<br>Green: &lt;36% &nbsp;|&nbsp; Caution: 36–43% &nbsp;|&nbsp; Red: &gt;43%</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is affordability risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Affordability risk arises when borrowers may struggle to sustain payments due to income constraints, rising obligations, or payment shock (e.g., ARM rate resets, end of teaser periods). It is distinct from creditworthiness — a borrower with a good credit score can still have unaffordable debt if DTI is stretched. Stress-testing affordability at higher rates and lower income scenarios is a key underwriting control.</p>
+              <div class="iqa-keywords"><span>Payment Shock</span><span>DTI Stress Test</span><span>Income Volatility</span><span>Rate Reset Risk</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What are underwriting overlays?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Overlays are additional rules or restrictions applied on top of baseline underwriting criteria — for example, requiring a minimum FICO of 640 even if the scorecard would approve at 620, or capping LTV at 85% in certain geographies. They are used to manage risk appetite, respond to portfolio performance signals, or address macro concerns. Overlay rates should be tracked — excessive overlays may indicate a mis-calibrated base model.</p>
+              <div class="iqa-keywords"><span>Policy Restrictions</span><span>Risk Appetite</span><span>Geographic Limits</span><span>Score Floors</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is policy exception risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Policy exception risk occurs when loans are approved outside standard underwriting guidelines — for example, DTI above the policy limit, FICO below the minimum, or LTV above the threshold. Exceptions are sometimes justified by compensating factors, but they systematically perform worse than within-policy loans. Tracking exception rates by volume and type is a critical early warning indicator of underwriting drift.</p>
+              <div class="iqa-keywords"><span>Exception Rate Monitoring</span><span>Compensating Factors</span><span>Underwriting Drift</span><span>EWI Signal</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is borrower stability important?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Stable employment and income reduce default risk because the borrower has a reliable, consistent source of funds for repayment. Employment tenure, industry, and income consistency are assessed. Gig workers, self-employed borrowers, and seasonal workers present higher income volatility risk — requiring income averaging and additional documentation to verify true repayment capacity.</p>
+              <div class="iqa-keywords"><span>Employment Tenure</span><span>Income Volatility</span><span>Self-Employed Risk</span><span>Repayment Consistency</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is thin-file risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Thin-file borrowers have limited credit history — fewer than 3–5 trade lines or less than 6 months of bureau data — making it difficult to assess repayment behavior using traditional scoring. Approximately 26 million Americans are "credit invisible." Lenders address thin-file risk through alternative data (rent, utility payments, cash flow), VantageScore (minimum 1 month history), or secured starter products.</p>
+              <div class="iqa-keywords"><span>Credit Invisible</span><span>Alt Data</span><span>VantageScore</span><span>Starter Products</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is bureau data used for?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Credit bureau data (from Equifax, Experian, TransUnion) is used to assess repayment history, credit utilization, open trade lines, delinquencies, public records (bankruptcies, judgments), and recent inquiries. It informs the credit score and provides the primary input to application scorecards. Under FCRA, it is also used for account management, collections, and adverse action notices.</p>
+              <div class="iqa-keywords"><span>Payment History</span><span>Utilization</span><span>Delinquencies</span><span>Hard Inquiries</span><span>FCRA Compliance</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DELINQUENCY & COLLECTIONS -->
+      <div class="tab-panel" id="tab-iqa-delinquency">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Delinquency mechanics, collections strategy, early warning signals, and borrower cure dynamics in retail lending.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is cure rate?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Cure rate measures the percentage of delinquent accounts that return to current status within one or two payment cycles. It is the primary measure of collections effectiveness at the early delinquency stage. A high cure rate (typically 60–80% for 30 DPD) indicates effective outreach and borrower liquidity; a declining cure rate is a key early warning indicator of deteriorating portfolio health.</p>
+              <div class="iqa-formula">Cure Rate = Accounts returning to current / Total DPD30+ accounts<br>Benchmark: 60–80% at 30 DPD</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What does a low cure rate indicate?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>A low cure rate suggests either that collections strategies are ineffective (poor right-party contact, wrong channel mix, insufficient hardship options) or that borrowers are under significant and sustained financial stress — meaning the delinquency is structural rather than situational. A declining cure rate is a leading indicator that roll rates will worsen and NCO will rise in 60–90 days.</p>
+              <div class="iqa-keywords"><span>Collections Effectiveness</span><span>Financial Stress</span><span>Roll Rate Signal</span><span>NCO Forecast</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What are early warning indicators?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Early warning indicators (EWIs) are signals that predict future delinquency or default before it occurs. Key EWIs include rising credit utilization (above 80%), missed or partial payments, declining behavioral scores, PD increases greater than 50%, bureau score drops greater than 50 points, and DTI creep. Aggregated into a composite EWI score, they enable proactive intervention before losses materialize.</p>
+              <div class="iqa-keywords"><span>Utilization Spike</span><span>Behavioral Score Drop</span><span>PD Increase</span><span>B-FUME Framework</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is skip risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Skip risk refers to borrowers who become unreachable or intentionally avoid repayment obligations — by moving, changing contact information, or ignoring outreach. Skip risk increases LGD because it reduces right-party contact rate, delays resolution, and makes recovery more expensive. Skip tracing (using alternate data sources to locate borrowers) is a key operational capability in collections.</p>
+              <div class="iqa-keywords"><span>RPC Rate Impact</span><span>Skip Tracing</span><span>LGD Increase</span><span>Collections Difficulty</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is hardship assistance?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Hardship programs temporarily support borrowers facing financial difficulties through payment modifications or deferments — such as waiving late fees, reducing minimum payments, deferring payments to end of term, or temporarily reducing the APR. They are most effective at early delinquency (1–59 DPD) when cure is still likely. Effectiveness should be tracked by program type, and programs should not be offered to accounts with structural (vs. situational) affordability problems.</p>
+              <div class="iqa-keywords"><span>Payment Deferral</span><span>APR Reduction</span><span>Cure Rate Impact</span><span>Situational vs Structural</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why are roll rates important?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Roll rates measure the percentage of accounts migrating from one delinquency bucket to the next (e.g., 30→60 DPD). They are the primary tool for forecasting future charge-offs from the current delinquency pipeline and evaluating collections effectiveness. A rising roll rate is a leading indicator that NCO will increase within 60–90 days — triggering CECL reserve builds and collections strategy reviews.</p>
+              <div class="iqa-formula">Roll Rate 30→60 = Accounts at 60 DPD this month / Accounts at 30 DPD last month</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is first payment default?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>First payment default (FPD) occurs when a borrower misses the very first scheduled payment on a new loan — often within 30–60 days of origination. It is a strong signal of either application fraud (synthetic identity, straw buyer) or severe underwriting weakness. FPD rates are monitored by underwriting channel, dealer, and origination segment to detect systematic fraud patterns or policy failures early.</p>
+              <div class="iqa-keywords"><span>Application Fraud Signal</span><span>Underwriting Weakness</span><span>Channel Monitoring</span><span>Dealer Risk</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is collection strategy segmentation?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Collections segmentation tailors outreach strategies based on borrower behavior, risk level, and likelihood of repayment — rather than treating all delinquent accounts identically. High-balance, high-cure-probability accounts receive intensive early intervention; low-balance, low-cure-probability accounts may proceed directly to settlement or agency referral. Segmentation improves recovery efficiency and reduces collections cost per dollar recovered.</p>
+              <div class="iqa-keywords"><span>Risk-Based Routing</span><span>Cure Probability</span><span>Balance Tiers</span><span>Collections ROI</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PORTFOLIO MONITORING & ANALYTICS -->
+      <div class="tab-panel" id="tab-iqa-monitoring">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Monitoring frameworks, analytics techniques, and KRI systems used to detect emerging risk across the credit portfolio.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is portfolio monitoring?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Portfolio monitoring involves continuously tracking credit risk metrics and trends to identify emerging issues before they escalate into significant losses. It covers delinquency rates, roll rates, charge-off trends, score distribution drift (PSI), vintage performance, concentration exposure, and strategy performance. Effective monitoring enables proactive adjustment of underwriting, pricing, and collections strategies.</p>
+              <div class="iqa-keywords"><span>KRI Tracking</span><span>DPD Trends</span><span>PSI Monitoring</span><span>Vintage Analysis</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is segmentation important?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Segmentation isolates risk trends across vintages, credit tiers, geographies, or product types so that emerging problems are identified precisely rather than masked by portfolio-level averages. A stable aggregate delinquency rate can hide severe stress in one segment. Segmentation enables targeted interventions — tightening specific score bands, geographies, or loan terms rather than making blunt portfolio-wide policy changes.</p>
+              <div class="iqa-keywords"><span>Risk Isolation</span><span>Targeted Intervention</span><span>Vintage Segmentation</span><span>Geographic Analysis</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is vintage analysis?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Vintage analysis tracks loan performance based on origination period by plotting cumulative NCO rates over time for each cohort. It identifies whether recent origination vintages are performing better or worse than older ones at the same loan age — directly measuring underwriting quality drift. A rising vintage loss curve signals that recent underwriting is generating higher-risk loans, often visible 6–18 months before it appears in aggregate NCO.</p>
+              <div class="iqa-formula">Vintage NCO at Month N = Cumulative C/O from cohort / Original cohort balance</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is trend analysis?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Trend analysis evaluates changes in key risk metrics over time to identify emerging patterns — whether delinquency rates are accelerating, roll rates are worsening, or score distributions are shifting. It distinguishes seasonal patterns (expected cyclical changes) from structural deterioration (sustained upward drift) that requires strategy action. A 3-month rolling trend is typically used to smooth noise while remaining responsive.</p>
+              <div class="iqa-keywords"><span>Time Series</span><span>Seasonal Adjustment</span><span>Structural vs Seasonal</span><span>3M Rolling</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What are Key Risk Indicators (KRIs)?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>KRIs are metrics used to monitor risk exposure and identify potential issues early — before they breach risk appetite limits. Credit KRIs include 30+ DPD rate, roll rates, NCO rate, LTV distribution, exception rate, and PSI. KRIs are assigned RAG (Red/Amber/Green) thresholds and reported to risk committees monthly. Breaching an Amber threshold triggers investigation; Red triggers management action.</p>
+              <div class="iqa-keywords"><span>RAG Status</span><span>Risk Committee</span><span>Threshold Triggers</span><span>Risk Appetite Alignment</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What are leading indicators?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Leading indicators predict future deterioration before it appears in realized losses. Key leading indicators include rising 30 DPD rates (precede 90+ DPD by 60–90 days), increasing credit utilization (signals liquidity stress), rising roll rates (predict future NCO), declining behavioral scores, and score distribution drift (PSI). Acting on leading indicators is significantly cheaper than responding to lagging indicators.</p>
+              <div class="iqa-keywords"><span>30 DPD Rate</span><span>Utilization Trend</span><span>Roll Rate</span><span>Behavioral Score</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What are lagging indicators?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Lagging indicators reflect outcomes that have already occurred — they confirm what has happened rather than predicting what will happen. Key lagging indicators in credit risk are net charge-off rate, recovery rate, and 90+ DPD delinquency. They are important for performance measurement, CECL provisioning accuracy, and regulatory reporting, but acting on lagging indicators alone means the loss has already happened.</p>
+              <div class="iqa-keywords"><span>NCO Rate</span><span>Recovery Rate</span><span>90+ DPD</span><span>Outcome Metrics</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is automation important in risk monitoring?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Automation improves the timeliness, consistency, scalability, and accuracy of portfolio oversight. Manual monitoring is slow, error-prone, and cannot scale across millions of accounts. Automated dashboards, anomaly detection, and KRI alerts enable real-time risk identification — allowing risk teams to focus on analysis and action rather than data preparation. It also reduces operational risk from human error in report production.</p>
+              <div class="iqa-keywords"><span>Real-Time Alerts</span><span>Scalability</span><span>Consistency</span><span>Operational Risk Reduction</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- STRATEGY & RISK DECISIONING -->
+      <div class="tab-panel" id="tab-iqa-decisioning">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Strategy design, credit decision frameworks, champion/challenger testing, and risk-return optimization in retail lending.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is champion/challenger testing?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Champion/challenger testing compares a current (champion) strategy against a proposed (challenger) strategy by splitting account traffic — typically 80% champion, 20% challenger. It empirically measures real-world performance differences in default rates, approval rates, and profitability before committing to a full rollout. It reduces the risk of large-scale strategy changes and is used across underwriting, line management, and collections.</p>
+              <div class="iqa-keywords"><span>80/20 Split</span><span>Empirical Testing</span><span>Rollout Risk Reduction</span><span>Strategy Comparison</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is strategy optimization?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Strategy optimization involves systematically refining underwriting criteria, pricing tiers, credit line assignment, or collections approaches to improve portfolio risk-adjusted performance. It uses data analysis, model output, champion/challenger results, and scenario testing to identify the combination of rules and thresholds that maximizes RAROC within risk appetite constraints.</p>
+              <div class="iqa-keywords"><span>RAROC Maximization</span><span>Threshold Calibration</span><span>Risk Appetite</span><span>Champion/Challenger</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is segmentation important in strategy design?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Different customer groups behave differently — a prime borrower with a sudden income shock behaves very differently from a subprime borrower with chronic financial stress. Segmentation enables more targeted, effective strategies: tighter underwriting for high-risk segments, more aggressive collections for low-cure-probability accounts, and higher credit limits for low-risk high-value customers. One-size-fits-all strategies are inherently sub-optimal.</p>
+              <div class="iqa-keywords"><span>Behavioural Differences</span><span>Targeted Strategy</span><span>Risk-Based Rules</span><span>Segment KPIs</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is risk-based pricing?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Risk-based pricing adjusts interest rates according to borrower risk level — higher-risk borrowers pay higher APRs to compensate the lender for greater expected loss. The minimum break-even APR equals funding cost + expected loss + operating expenses. Risk-based pricing enables lenders to serve a broader credit spectrum while maintaining profitability, subject to ECOA fair lending requirements.</p>
+              <div class="iqa-formula">Break-even APR = Funding Cost + EL% + OpEx%<br>EL% = PD × LGD (as % of balance)</div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is line assignment strategy?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Line assignment (credit limit setting) determines the appropriate credit exposure for each approved borrower based on their risk score, income, existing obligations, and behavioral signals. Initial line assignment at origination is driven by underwriting data; ongoing line management uses behavioral scores to increase limits for low-risk customers and proactively decrease them for accounts showing EWI signals.</p>
+              <div class="iqa-keywords"><span>Initial Line Setting</span><span>Behavioral Scoring</span><span>Proactive CLDs</span><span>EAD Management</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is cutoff strategy?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>A cutoff strategy establishes minimum score thresholds or policy criteria for loan approval — applicants scoring below the cutoff are declined. The optimal cutoff balances approval rate (volume) against default rate (risk). Moving the cutoff lower increases approvals but raises average PD; moving it higher reduces defaults but declines more profitable customers. Champion/challenger testing is used to calibrate cutoffs against risk appetite.</p>
+              <div class="iqa-keywords"><span>Score Threshold</span><span>Approval Rate</span><span>Default Rate Trade-off</span><span>Risk Appetite Alignment</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is override risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Override risk occurs when manual decisions bypass automated underwriting or policy controls — approving declined accounts (upward overrides) or declining approved accounts (downward overrides). Upward overrides systematically underperform automated decisions. Override rates, especially upward override rates by team, region, or product, must be tracked as a KRI — rising override rates signal policy discipline erosion and often precede performance deterioration.</p>
+              <div class="iqa-keywords"><span>Upward Override</span><span>Policy Discipline</span><span>Override Rate KRI</span><span>Manual Decision Risk</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is monitoring strategy performance important?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Continuous monitoring ensures strategies remain effective as customer behavior and economic conditions change. A collections strategy calibrated in a low-unemployment environment may underperform in a recession. A scoring model trained pre-pandemic may have stale variable relationships post-pandemic. Strategy monitoring — tracking KPIs against expectations — triggers recalibration before deterioration becomes significant loss.</p>
+              <div class="iqa-keywords"><span>Strategy Drift</span><span>KPI vs Expectation</span><span>Economic Sensitivity</span><span>Recalibration Trigger</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FRAUD & OPERATIONAL RISK -->
+      <div class="tab-panel" id="tab-iqa-fraud">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Fraud typologies, operational risk controls, model governance, and data quality in the lending environment.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is synthetic identity fraud?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Synthetic identity fraud occurs when real and fake identity information are combined to create a fictitious borrower profile — for example, using a real Social Security Number (often from a child or deceased person) with fabricated name, address, and date of birth. Synthetic identities build credit slowly over months or years before executing a "bust-out," maxing out all available credit and disappearing. It is the fastest-growing financial crime in the US.</p>
+              <div class="iqa-keywords"><span>Bust-Out Pattern</span><span>SSN Misuse</span><span>Credit Piggybacking</span><span>First Payment Default</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is application fraud?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Application fraud involves false information submitted during the credit application process — inflated income, fabricated employment, misrepresented collateral value, or identity theft. It is detected through income verification (IRS 4506-C, payroll data), employment verification (The Work Number), behavioral biometrics at application, and device fingerprinting. First payment default is often the first realized signal of application fraud.</p>
+              <div class="iqa-keywords"><span>Income Misrepresentation</span><span>Identity Theft</span><span>Income Verification</span><span>FPD Signal</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why is fraud risk important in auto lending?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Auto lending involves large individual balances ($20,000–$60,000+) and physical collateral, making it attractive for identity theft and dealer-facilitated fraud. Dealer fraud — inflating income, misrepresenting vehicle condition, or creating fictitious buyers (straw buyers) — is a material fraud vector in indirect auto lending. Lenders must monitor dealer performance metrics, first payment default rates by dealer, and collateral verification quality.</p>
+              <div class="iqa-keywords"><span>Dealer Fraud</span><span>Straw Buyer</span><span>Collateral Misrepresentation</span><span>FPD by Dealer</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is operational risk in lending?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Operational risk includes process failures, system issues, or human errors that impact lending operations — miscalculated payments, incorrect adverse action notices, system outages affecting disbursement, data feed failures breaking scoring pipelines, or SCRA checks not being run. Under Basel III, operational risk carries a capital charge. Effective controls, testing, and BCP (business continuity planning) mitigate operational risk.</p>
+              <div class="iqa-keywords"><span>Process Failures</span><span>System Risk</span><span>Regulatory Compliance</span><span>Basel III Capital Charge</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is control effectiveness?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Control effectiveness measures whether risk controls are properly designed (design effectiveness) and actually operating as intended in practice (operating effectiveness). A control may be well-designed on paper but bypassed in practice. Controls are assessed through testing, sampling, and internal audit. Ineffective controls — particularly in underwriting, fraud detection, or SCRA/ECOA compliance — are a material source of regulatory and financial risk.</p>
+              <div class="iqa-keywords"><span>Design Effectiveness</span><span>Operating Effectiveness</span><span>Internal Audit</span><span>Control Testing</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">Why are data quality checks important?</div>
+            <div class="iqa-tag iqa-tag-basic">Foundational</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Poor data quality produces incorrect risk assessments, flawed strategy decisions, and misleading performance metrics. If income data is inconsistently recorded, DTI calculations will be wrong; if DPD buckets are misclassified, IFRS 9 staging will be incorrect; if collateral values are stale, LTV-based risk decisions will be mispriced. Data quality is the foundation of every model, KRI, and regulatory report — errors compound through the entire risk framework.</p>
+              <div class="iqa-keywords"><span>Garbage In Garbage Out</span><span>Model Input Quality</span><span>Regulatory Accuracy</span><span>Data Governance</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is model risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Model risk arises when risk models produce inaccurate or inappropriate results — due to flawed assumptions, data quality issues, population drift, or misapplication. Under Federal Reserve SR 11-7, all material models must have independent validation, be inventoried and tiered by materiality, and be monitored on an ongoing basis. Model risk can lead to mispriced products, under/over-reserving under CECL, and regulatory findings.</p>
+              <div class="iqa-keywords"><span>SR 11-7</span><span>Independent Validation</span><span>Model Inventory</span><span>Population Drift</span></div>
+            </div>
+          </div>
+
+          <div class="iqa-card">
+            <div class="iqa-q">What is governance in credit risk?</div>
+            <div class="iqa-tag iqa-tag-intermediate">Intermediate</div>
+            <div class="iqa-answer">
+              <div class="iqa-answer-label">Strong Answer</div>
+              <p>Credit risk governance ensures accountability, oversight, and compliance in risk strategy development, model use, and portfolio monitoring. It includes a three-lines-of-defence framework: first line (business/origination) owns the risk, second line (credit risk) provides oversight and challenge, third line (internal audit) independently validates. Risk committees approve material policy changes and review KRI performance. Governance failures — particularly weak second-line challenge — are consistently cited in regulatory enforcement actions.</p>
+              <div class="iqa-keywords"><span>3 Lines of Defence</span><span>Second-Line Challenge</span><span>Risk Committee</span><span>Regulatory Compliance</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CREDIT RISK MODELING CONCEPTS -->
+      <div class="tab-panel" id="tab-iqa-crmod">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Credit risk model types — from PD and LGD through behavioral scoring, fraud, and collections models. The building blocks of a modern risk modeling function.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card"><div class="iqa-q">What is a credit risk model?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>A credit risk model uses statistical or machine learning techniques to estimate the likelihood of borrower default, expected losses, or portfolio risk. Models range from application scorecards (predicting PD at origination) to behavioral models (ongoing account monitoring), LGD models (loss severity), EAD models (exposure projection), and stress test satellite models (macroeconomic loss projection). Together they form an integrated credit risk modeling ecosystem.</p><div class="iqa-keywords"><span>PD</span><span>LGD</span><span>EAD</span><span>Application</span><span>Behavioral</span><span>Stress Testing</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is a Probability of Default (PD) model?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>A PD model predicts the likelihood that a borrower will default within a specified time horizon — typically 12 months for account management, or lifetime for CECL provisioning. PD models use logistic regression or gradient boosting on bureau data, payment history, income, utilization, and behavioral signals. Output is a calibrated probability (0–1) that is monitored for stability using PSI and backtested against actual default rates.</p><div class="iqa-formula">PD = P(Default within horizon | borrower characteristics)<br>Validated using: AUC, Gini, KS, Hosmer-Lemeshow</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is an LGD model?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>An LGD model estimates the percentage of exposure a lender expects to lose after recoveries once a borrower defaults. LGD = 1 − Recovery Rate. For secured lending, LGD depends on collateral value (LTV, depreciation, auction proceeds) and repossession costs. For unsecured lending, LGD is driven by collections effectiveness, time since default, and balance size. Beta regression is common since LGD is bounded between 0 and 1.</p><div class="iqa-formula">LGD = 1 − Recovery Rate<br>Secured auto: 30–60% &nbsp;|&nbsp; Unsecured card: 75–100%</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is an Exposure at Default (EAD) model?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>An EAD model estimates the total amount outstanding at the time of borrower default. For installment loans, EAD ≈ current balance (minimal uncertainty). For revolving credit (cards, HELOCs), EAD requires a Credit Conversion Factor (CCF) to estimate how much of the undrawn limit will be drawn before default — borrowers typically draw down credit lines pre-default, making EAD > current balance.</p><div class="iqa-formula">EAD (revolving) = Balance + CCF × Unused Limit<br>CCF for cards: typically 50–80% of undrawn line</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is behavioral scoring?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Behavioral scoring models use customer payment history, transaction behavior, utilization trends, and account activity over time to predict future credit performance. Unlike application scores (point-in-time at origination), behavioral scores are refreshed monthly on existing accounts. They drive credit limit decisions, collections prioritization, early warning triggers, and IFRS 9 SICR assessments. Generally outperform bureau scores because they capture account-level observed behavior.</p><div class="iqa-keywords"><span>Monthly Refresh</span><span>Account-Level</span><span>SICR Trigger</span><span>Limit Management</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is application scoring?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Application scoring models assess credit risk at loan origination using borrower demographics, bureau data, income, employment, and financial attributes. A WoE/logistic regression scorecard is the traditional approach; ML models (XGBoost) are increasingly used for better discrimination. The score drives the approve/decline decision, credit limit assignment, and initial pricing. Validated using Gini, KS, and out-of-time sample performance.</p><div class="iqa-keywords"><span>Origination</span><span>WoE Scorecard</span><span>Approve/Decline</span><span>Limit Assignment</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is a fraud detection model?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Fraud models identify suspicious applications or transactions using anomaly detection, pattern recognition, and predictive analytics. At application: behavioral biometrics, device fingerprinting, velocity checks, and identity verification signals detect synthetic identity and application fraud. In-life: transaction monitoring models flag unusual spend patterns, geographic anomalies, and rapid balance drawdowns (bust-out signals). First Payment Default (FPD) rate by acquisition channel is a key lagged fraud signal.</p><div class="iqa-keywords"><span>Anomaly Detection</span><span>FPD Signal</span><span>Bust-Out</span><span>Behavioral Biometrics</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is a collections model?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Collections models predict the likelihood of repayment, cure, or further delinquency for accounts already past due — enabling prioritization of collections treatments by expected return. Inputs include DPD bucket, balance, payment history, behavioral score, right-party contact history, and hardship status. Outputs drive treatment assignment: which accounts get calls vs. SMS vs. settlement offers vs. legal referral. Improves cure rates and reduces cost-per-recovery.</p><div class="iqa-keywords"><span>Cure Probability</span><span>Treatment Assignment</span><span>Cost-per-Recovery</span><span>Champion/Challenger</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is a response model?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Response models predict the likelihood that customers will respond positively to credit offers, limit increase offers, balance transfer campaigns, or collections interventions. They are used alongside risk models to calculate net expected value: a high-risk customer who is likely to respond generates higher revenue but also higher expected loss. Combining response and risk models enables optimized targeting — maximizing risk-adjusted profit per campaign.</p><div class="iqa-keywords"><span>Campaign Targeting</span><span>Net Expected Value</span><span>Risk × Response</span><span>Offer Optimization</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is an Expected Loss model?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Expected Loss models combine PD, LGD, and EAD to estimate anticipated portfolio losses — the statistical average loss from a pool of loans. EL drives CECL/IFRS 9 provisioning, risk-based pricing (break-even APR calculation), and economic capital allocation. For CECL, EL must be calculated over the lifetime of each loan at origination, with forward-looking macroeconomic scenario adjustments applied as Q-factor overlays.</p><div class="iqa-formula">EL = PD × LGD × EAD<br>Lifetime EL (CECL) = Σ EL(t) discounted at EIR</div></div></div>
+
+        </div>
+      </div>
+
+      <!-- STATISTICAL & MACHINE LEARNING -->
+      <div class="tab-panel" id="tab-iqa-statml">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Core machine learning and statistical concepts applied in credit risk modeling — algorithms, bias/variance trade-off, and model building best practices.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card"><div class="iqa-q">What algorithms are commonly used in credit risk modeling?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>The primary algorithms are: logistic regression (industry standard — interpretable, stable, regulator-friendly), decision trees (segment discovery and policy rules), random forests (ensemble approach, handles non-linearity), gradient boosting — XGBoost/LightGBM (highest discrimination on tabular data), and neural networks (used for fraud and NLP applications). In regulated credit risk, logistic regression remains dominant due to explainability requirements; gradient boosting is increasingly used with SHAP for adverse action.</p><div class="iqa-keywords"><span>Logistic Regression</span><span>XGBoost</span><span>Random Forest</span><span>Neural Networks</span><span>SHAP</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">Why is logistic regression widely used in credit risk?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Logistic regression is interpretable (coefficients directly show variable direction and magnitude), stable (less prone to overfitting than complex models), produces calibrated probability outputs (directly usable as PD), and is widely accepted by regulators. The WoE transformation makes it handle mixed variable types naturally. Under SR 11-7, model validators can readily assess conceptual soundness of logistic regression — a key governance advantage over black-box alternatives.</p><div class="iqa-keywords"><span>Interpretable</span><span>Calibrated PD</span><span>SR 11-7 Friendly</span><span>WoE Compatible</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is a decision tree?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>A decision tree recursively splits data into subgroups based on predictor variables that best separate good from bad outcomes. Each split maximizes information gain (Gini impurity or entropy). Decision trees are highly interpretable — the splits translate directly into business rules — but are unstable (small data changes cause large structural changes) and prone to overfitting. Primarily used for segment discovery and policy rule development in credit risk, rather than as standalone production models.</p><div class="iqa-keywords"><span>Recursive Splitting</span><span>Gini Impurity</span><span>Segment Discovery</span><span>Overfitting Risk</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is random forest?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Random forest combines multiple decision trees — each trained on a random bootstrap sample with a random subset of features — and averages their predictions. This ensemble approach reduces overfitting and variance while maintaining the ability to capture non-linear patterns. Feature importance scores are derived from average impurity reduction across trees. Less interpretable than logistic regression but more so than gradient boosting; useful as a challenger model or for feature selection.</p><div class="iqa-keywords"><span>Bootstrap Aggregation</span><span>Feature Importance</span><span>Variance Reduction</span><span>Challenger Model</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is gradient boosting?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Gradient boosting sequentially adds weak learners (shallow decision trees), each one correcting the residual errors of the previous model. XGBoost and LightGBM are dominant implementations. Produces the highest discrimination (Gini/AUC) on tabular credit data. Requires careful hyperparameter tuning (learning rate, tree depth, regularization) to prevent overfitting. In credit risk, SHAP values are required for adverse action reason code generation and regulatory model documentation.</p><div class="iqa-formula">F(x) = Σ αₜ · hₜ(x), where each hₜ minimizes residual loss<br>SHAP required for adverse action compliance</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is overfitting?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Overfitting occurs when a model learns the noise and idiosyncrasies of the training data rather than true underlying patterns — producing excellent in-sample performance but poor out-of-sample generalization. In credit risk, overfitting is detected by comparing in-sample Gini to out-of-time (OOT) Gini: a large drop (e.g. 55% in-sample vs 40% OOT) signals overfitting. Mitigations include regularization (L1/L2), cross-validation, reducing model complexity, and larger training samples.</p><div class="iqa-keywords"><span>Train vs Test Gap</span><span>OOT Validation</span><span>Regularization</span><span>Cross-Validation</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is underfitting?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Underfitting occurs when a model is too simple to capture meaningful relationships in the data — producing poor performance both in-sample and out-of-sample. A logistic regression with only 2 variables on a complex portfolio will underfit. Symptoms include low Gini (<30%), flat lift curves, and residuals that show systematic patterns. Solutions include adding relevant features, using more flexible algorithms, or better WoE binning to capture non-linear variable relationships.</p><div class="iqa-keywords"><span>High Bias</span><span>Low Gini</span><span>Feature Enrichment</span><span>Model Complexity</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is feature engineering?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Feature engineering creates predictive variables from raw data to improve model performance. In credit risk: computing utilization ratios from balance and limit data, creating payment ratio (payment made / minimum due), time since last delinquency, balance trend over 3/6/12 months, number of trades opened in last 6 months, income stability proxy from pay frequency. WoE binning is a form of supervised feature engineering that optimizes variable encoding for logistic regression.</p><div class="iqa-keywords"><span>Utilization Ratio</span><span>Payment Ratio</span><span>Balance Trend</span><span>WoE Binning</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is class imbalance?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Class imbalance occurs when default cases are much fewer than non-default cases — typically 2–10% of a portfolio. This causes models to be biased toward predicting non-default, producing high accuracy but poor sensitivity to actual defaults. Solutions include oversampling minority class (SMOTE), undersampling majority class, adjusting class weights, or using probability calibration. The development sample should have at least 1,500 bad accounts for stable scorecard estimation.</p><div class="iqa-formula">Imbalance ratio: 5% bad rate = 1:19 bad:good<br>Minimum 1,500 bads required for stable scorecard</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is model interpretability?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Interpretability refers to the ability to explain how model variables influence predictions — at both global (overall model behavior) and local (individual prediction) levels. In credit risk, interpretability is a regulatory requirement: ECOA/FCRA mandate that adverse action notices provide principal reasons for denial, which requires knowing each variable's contribution. SHAP values fulfill this for ML models. Logistic regression with WoE is inherently interpretable through coefficients and scorecard points.</p><div class="iqa-keywords"><span>SHAP</span><span>LIME</span><span>Adverse Action Codes</span><span>ECOA Compliance</span></div></div></div>
+
+        </div>
+      </div>
+
+      <!-- MODEL PERFORMANCE & VALIDATION -->
+      <div class="tab-panel" id="tab-iqa-validation">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Model validation metrics, testing frameworks, and SR 11-7 governance requirements for credit risk models in US regulated institutions.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card"><div class="iqa-q">What is model validation?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Model validation independently evaluates whether a model is conceptually sound, performs as expected, and is appropriate for its intended use — as required by Federal Reserve SR 11-7 guidance. Validation is performed by a team independent of model developers. It covers: conceptual soundness review, data quality assessment, in-sample and out-of-time performance testing, sensitivity analysis, benchmarking against challenger models, and documentation review. Material findings can result in model restrictions or use limitations.</p><div class="iqa-keywords"><span>SR 11-7</span><span>Independent Review</span><span>OOT Testing</span><span>Model Restrictions</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is AUC/ROC?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>AUC-ROC (Area Under the Receiver Operating Characteristic Curve) measures a model's ability to distinguish between good and bad borrowers across all classification thresholds. AUC = 0.5 is random (no discrimination); AUC = 1.0 is perfect. In credit risk, AUC >0.70 is generally acceptable; >0.80 is strong. Related to Gini coefficient by: Gini = 2 × AUC − 1. AUC is threshold-independent — it evaluates rank-ordering ability across the entire score range.</p><div class="iqa-formula">AUC >0.70 = Acceptable &nbsp;|&nbsp; >0.80 = Strong<br>Gini = 2 × AUC − 1</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is KS statistic?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>The KS (Kolmogorov-Smirnov) statistic measures the maximum separation between cumulative distributions of good and bad borrowers at any given score threshold. It identifies the score cut-point where the model achieves its highest discriminatory power. KS >35% is generally considered acceptable for production credit models. KS is particularly useful for setting score cutoffs in approval policies and for explaining model performance to business stakeholders.</p><div class="iqa-formula">KS = max |F_good(x) − F_bad(x)| across all score thresholds<br>Target: KS >35%</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is Gini coefficient?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>The Gini coefficient measures model discriminatory power derived from the ROC/CAP curve: Gini = 2 × AUC − 1. Range 0–1 (or 0–100%). A Gini of 0 means the model has no discriminatory power; 1.0 is perfect. Target Gini >40% for production scorecards; >50% is strong. The Gini should be monitored on a rolling OOT window — a drop >5 points from development Gini triggers a model review under most governance frameworks.</p><div class="iqa-formula">Gini = 2 × AUC − 1<br>Target >40% OOT &nbsp;|&nbsp; Review if drop >5 pts</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is a confusion matrix?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>A confusion matrix evaluates classification performance at a specific score threshold using: True Positives (correctly predicted bads), False Positives (good borrowers predicted as bad — Type I error), False Negatives (bad borrowers predicted as good — Type II error), and True Negatives (correctly predicted goods). In credit risk, Type II errors (approving bad borrowers) are typically more costly than Type I errors (rejecting good borrowers), so the threshold is calibrated to reflect that asymmetry.</p><div class="iqa-compare"><div class="iqa-compare-col iqa-col-blue"><div class="iqa-compare-title">Type I Error (FP)</div><ul><li>Good borrower rejected</li><li>Lost revenue opportunity</li><li>Cost: missed profit</li><li>Fair lending risk</li></ul></div><div class="iqa-compare-col iqa-col-red"><div class="iqa-compare-title">Type II Error (FN)</div><ul><li>Bad borrower approved</li><li>Credit loss realized</li><li>Cost: PD × LGD × EAD</li><li>Higher financial impact</li></ul></div></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is model calibration?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Calibration ensures that a model's predicted probabilities align closely with actual observed outcomes. A well-calibrated PD model where the model predicts 5% PD should show ~5% actual defaults in that score band. Hosmer-Lemeshow test formally assesses calibration by comparing predicted vs. actual default rates across deciles. Poor calibration means the model's PD outputs cannot be directly used for CECL provisioning without recalibration (Platt scaling or isotonic regression).</p><div class="iqa-keywords"><span>Hosmer-Lemeshow</span><span>Platt Scaling</span><span>CECL Provisioning</span><span>PD Alignment</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is back-testing?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Back-testing compares predicted model outcomes against actual historical performance — asking "how well would this model have performed if deployed in the past?" In credit risk, back-testing is applied to PD models (predicted vs actual default rates by score band), stress test models (projected vs actual NCO in prior downturns), and CECL models (allowance vs actual loss emergence). Back-testing against the 2008–2009 GFC data is the standard stress model validation benchmark.</p><div class="iqa-keywords"><span>Predicted vs Actual</span><span>GFC Benchmark</span><span>CECL Validation</span><span>Hindsight Analysis</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is Population Stability Index (PSI)?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>PSI measures whether the population distribution of a model's scores or inputs has shifted significantly between the development period and the current deployment period. PSI <0.1 = stable (no action); 0.1–0.2 = investigate (monitor closely); >0.2 = significant shift (model may need recalibration or redevelopment). PSI is calculated monthly as: PSI = Σ (Actual% − Expected%) × ln(Actual%/Expected%) across score bands. It is the primary model monitoring metric.</p><div class="iqa-formula">PSI = Σ (Actual% − Expected%) × ln(Actual%/Expected%)<br>&lt;0.10 Stable | 0.10–0.20 Monitor | &gt;0.20 Investigate</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is model drift?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Model drift occurs when model performance deteriorates due to changes in customer behavior, economic conditions, or data generating processes — meaning the relationships the model learned during development no longer hold. Detected through falling Gini on rolling OOT windows, rising PSI/CSI, or increasing divergence between predicted and actual default rates. Drift requires model recalibration (adjust intercept or score offset) or full redevelopment if structural relationships have changed.</p><div class="iqa-keywords"><span>Concept Drift</span><span>Data Drift</span><span>Recalibration</span><span>Redevelopment</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What are Type I and Type II errors?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Type I error (false positive) means falsely rejecting a good borrower — the model predicts default but the borrower would have repaid. Type II error (false negative) means approving a bad borrower — the model predicts repayment but the borrower defaults. In credit risk, Type II errors are typically more costly (actual credit loss) than Type I errors (lost revenue opportunity). The classification threshold is set to reflect this asymmetry, and fair lending laws require monitoring Type I error rates across demographic groups.</p><div class="iqa-keywords"><span>False Positive = Reject Good</span><span>False Negative = Approve Bad</span><span>Threshold Setting</span><span>Fair Lending</span></div></div></div>
+
+        </div>
+      </div>
+
+      <!-- BUREAU & SCORECARD -->
+      <div class="tab-panel" id="tab-iqa-bureau">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Credit bureau mechanics, scorecard variable selection, WoE/IV methodology, and bureau-derived risk signals used in US consumer lending.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card"><div class="iqa-q">What is a credit scorecard?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>A credit scorecard is a statistically derived model that assigns a numerical risk score to a borrower based on their characteristics. It is typically built using WoE-transformed logistic regression and scaled to a points-based output (e.g., 300–850 or 0–1000). Each characteristic (payment history, utilization, DPD history) contributes a positive or negative points value. The total score drives approve/decline decisions, credit limit assignment, and risk-based pricing. Fully auditable and regulator-approved.</p><div class="iqa-keywords"><span>WoE Logistic Regression</span><span>Points-Based</span><span>Approve/Decline</span><span>Auditable</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What variables are commonly used in scorecards?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Common scorecard variables include: payment history (ever 30/60/90 DPD, months since last delinquency), utilization ratio (revolving balance / limit), derogatory marks (bankruptcies, charge-offs, collections), credit inquiries (hard pulls in last 6–12 months), DTI and income ratios, account age (age of oldest/newest account), credit mix (revolving vs installment vs mortgage), and balance trend. Bureau trade line data drives most variables; income and DTI come from application data.</p><div class="iqa-keywords"><span>Payment History</span><span>Utilization</span><span>Derogatory Marks</span><span>Inquiries</span><span>Account Age</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is Weight of Evidence (WoE)?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>WoE transforms categorical or binned continuous variables into a predictive numerical value based on the log ratio of good and bad event rates in each bin. WoE = ln(% Bads in bin / % Goods in bin). Positive WoE = lower-risk bin; negative WoE = higher-risk bin. WoE encoding handles missing values naturally (separate bin), enforces monotonic relationships, and enables logistic regression to work effectively on mixed variable types. The quality of WoE binning is the most important step in scorecard development.</p><div class="iqa-formula">WoE = ln(Distribution of Bads / Distribution of Goods)<br>Positive WoE = lower risk; Negative WoE = higher risk</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is Information Value (IV)?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>IV quantifies a variable's overall predictive power in distinguishing good from bad borrowers. IV = Σ (% Bads − % Goods) × WoE across all bins. Scale: IV <0.02 = useless; 0.02–0.1 = weak; 0.1–0.3 = medium; 0.3–0.5 = strong; >0.5 = suspicious (potential data leakage). Variables are ranked by IV during feature selection; target IV >0.1 for inclusion. High IV variables (payment history, DPD) should always be included in scorecards.</p><div class="iqa-formula">IV = Σ (% Bads − % Goods)ᵢ × WoEᵢ<br>&gt;0.3 Strong | &gt;0.5 Suspicious (check leakage)</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">Why are bureau scores important?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Bureau scores provide standardized, third-party validated measures of borrower creditworthiness based on repayment history across all creditors — not just the applying lender. They are the single most powerful predictor of default for most consumer products. FICO Score 8 (300–850) is used in 90%+ of US lending decisions. Bureau scores also enable comparison across applicants on a common scale, power adverse action reason codes, and serve as the primary input for risk-based pricing tiers.</p><div class="iqa-keywords"><span>FICO 8</span><span>Third-Party Validated</span><span>Cross-Creditor View</span><span>Adverse Action</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is bureau trended data?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Trended data tracks 24 months of account balance and payment history rather than just a point-in-time snapshot — revealing trajectory. A borrower paying down balances (decreasing utilization trend) is lower risk than one building balances, even if their current snapshot looks identical. VantageScore 4.0 incorporates trended data. It captures paydown velocity, balance cycling behavior, and minimum-only payment patterns — all strongly predictive of future default beyond what static snapshots capture.</p><div class="iqa-keywords"><span>24-Month History</span><span>Paydown Velocity</span><span>Balance Cycling</span><span>VantageScore 4.0</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is utilization ratio?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Utilization ratio is the percentage of available revolving credit that is currently being used: balance / credit limit. It is the second most important FICO factor (30% of score) and a powerful default predictor. Borrowers above 30% utilization show elevated delinquency rates; above 70% is high risk and often signals liquidity stress. A sudden spike in utilization (from 20% to 80% month-over-month) is one of the strongest individual early warning indicators of imminent default.</p><div class="iqa-formula">Utilization = Revolving Balance / Credit Limit<br>&gt;30% Elevated | &gt;70% High Risk | Spike = EWI</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">Why are recent inquiries important?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Frequent recent hard inquiries (6–12 months) indicate a borrower is actively seeking new credit — which may signal financial stress, increased leverage appetite, or credit shopping. Multiple inquiries in a short window are a negative FICO factor. However, rate-shopping inquiries for the same product type (mortgage, auto) within a 14–45 day window are deduplicated by FICO to avoid penalizing legitimate comparison shopping. In underwriting models, inquiry count is typically binned (0, 1, 2, 3+) and carries negative WoE at higher counts.</p><div class="iqa-keywords"><span>Hard Pull</span><span>Credit Shopping</span><span>14–45 Day Dedup</span><span>FICO Factor</span></div></div></div>
+
+        </div>
+      </div>
+
+      <!-- PORTFOLIO ANALYTICS & MONITORING MODELS -->
+      <div class="tab-panel" id="tab-iqa-portanalytics">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Portfolio-level analytical models — vintage analysis, roll rates, transition matrices, stress testing, and early warning model frameworks.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card"><div class="iqa-q">What is vintage modeling?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Vintage modeling analyzes portfolio performance cohort-by-cohort based on origination period, plotting cumulative loss rates against loan age (months on book). This enables direct comparison of underwriting quality across different time periods — a 2022 vintage that shows higher losses at month 18 than the 2020 vintage did at the same age signals underwriting deterioration. Vintage analysis is foundational to CECL lifetime loss estimation and to detecting the lagged impact of policy changes.</p><div class="iqa-formula">Vintage NCO(t) = Cumulative losses / Original balance at month t<br>Compare across origination cohorts at same loan age</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What are roll rate models?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Roll rate models estimate the probability of accounts migrating from one delinquency bucket to the next (or curing back to current) in a given period. A roll rate matrix shows: % of 30 DPD that roll to 60 DPD, cure to current, or stay at 30 DPD. Rising roll rates are the most reliable short-term predictor of future charge-off increases. They feed directly into CECL roll rate methodology and collections strategy design.</p><div class="iqa-formula">Roll Rate 30→60 = Accounts moving 30→60 DPD / Total 30 DPD accounts<br>Rising roll rate → revise NCO forecast upward</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is transition matrix analysis?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>A transition matrix is a square matrix where entry [i,j] represents the probability of an account moving from state i (e.g., Current) to state j (e.g., 30 DPD) over a defined period. It generalizes roll rates to capture all possible state movements simultaneously. Transition matrices are used in Markov chain loss forecasting, CECL roll rate methodology, and IFRS 9 staging models. The matrix must satisfy row-sum constraints (each row sums to 1) and is estimated from historical migration data.</p><div class="iqa-keywords"><span>Markov Chain</span><span>State Migration</span><span>CECL Methodology</span><span>Row-Sum = 1</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is stress testing in credit risk?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Stress testing simulates portfolio performance under adverse economic conditions — projecting how delinquencies, charge-offs, and capital ratios would evolve if unemployment rises, GDP contracts, or home prices fall. For US banks >$100B: DFAST/CCAR requires 9-quarter projections under three Fed scenarios. For all lenders: internal stress tests inform CECL Q-factor overlays and risk appetite calibration. Satellite models link macro variables (unemployment, HPI, GDP) to segment-level PD and LGD.</p><div class="iqa-keywords"><span>DFAST/CCAR</span><span>Satellite Models</span><span>Macro Variables</span><span>Q-Factor Overlays</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is scenario analysis?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Scenario analysis evaluates how changes in specific economic variables or business conditions impact portfolio risk. Unlike stress testing (broad macroeconomic scenarios), scenario analysis often examines specific hypotheses: "What if used car prices fall 20%?" or "What if unemployment in Texas rises 3%?" It is used for portfolio concentration risk assessment, CECL Q-factor development, and strategic planning. Sensitivity analysis (varying one parameter at a time) is a simpler form used in model validation.</p><div class="iqa-keywords"><span>Hypothesis Testing</span><span>Concentration Risk</span><span>Q-Factor</span><span>Sensitivity Analysis</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What are early warning models?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Early warning models identify leading indicators of future delinquency or default — detecting credit deterioration before it becomes visible in DPD buckets. Inputs include behavioral score decline, utilization spike, bureau refresh triggers (new derogatory mark, score drop >50 pts), payment ratio deterioration, and income/employment changes. EWI scores aggregate individual signals into a watchlist tier. IFRS 9 SICR (Significant Increase in Credit Risk) triggers are formally linked to EWI outputs in governance-compliant banks.</p><div class="iqa-keywords"><span>B-FUME Framework</span><span>SICR Trigger</span><span>Watchlist Tier</span><span>Behavioral Score</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is anomaly detection in credit risk?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Anomaly detection identifies unusual borrower or portfolio behavior that deviates significantly from historical norms — flagging potential fraud, data quality issues, or emerging risk concentrations. Techniques include statistical outlier detection (z-scores, IQR), isolation forest, autoencoders, and clustering algorithms. Applications in credit risk: fraud detection (unusual transaction patterns), model monitoring (unexpected score distribution changes), and portfolio surveillance (sudden geographic delinquency spikes).</p><div class="iqa-keywords"><span>Isolation Forest</span><span>Z-Score Outliers</span><span>Fraud Detection</span><span>Portfolio Surveillance</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What are collections optimization models?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Collections optimization models prioritize collections treatments based on predicted recovery likelihood, expected cure probability, right-party contact probability, and cost of intervention. Inputs include DPD bucket, balance, behavioral score, account age, hardship status, and prior collections response. Outputs drive treatment assignment: high-probability cure accounts get early phone contact; low-probability, high-balance accounts get legal referral; settlement offers target accounts with predicted 30–50% settlement acceptance. Champion/challenger testing validates strategy improvements.</p><div class="iqa-keywords"><span>Cure Probability</span><span>Treatment Assignment</span><span>Settlement Probability</span><span>C/C Testing</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is segmentation analysis?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Segmentation analysis identifies performance differences across customer groups, products, geographies, score tiers, or vintages. It prevents aggregate portfolio metrics from masking concentrated deterioration. For example, a stable aggregate NCO rate can hide severe stress in one vintage or geography. Segmentation is used in portfolio monitoring (which segments are driving risk?), strategy design (different treatments by risk tier), and CECL modeling (segment-specific PD/LGD assumptions).</p><div class="iqa-keywords"><span>Risk Tier</span><span>Vintage</span><span>Geography</span><span>CECL Segmentation</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is cohort analysis?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Cohort analysis evaluates groups of borrowers with shared characteristics — most commonly origination period (vintage), but also acquisition channel, product type, or risk tier. Tracking cohort performance over time reveals maturation curves (losses typically peak at 18–36 months for auto loans), underwriting quality differences across cohorts, and the impact of policy changes on subsequent performance. It is the foundation of vintage analysis and a key input to loss forecasting models.</p><div class="iqa-keywords"><span>Maturation Curve</span><span>Policy Impact</span><span>Loss Peak Timing</span><span>Vintage Performance</span></div></div></div>
+
+        </div>
+      </div>
+
+      <!-- TECHNICAL DATA & ENGINEERING -->
+      <div class="tab-panel" id="tab-iqa-techdata">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Data engineering, SQL, Snowflake, ETL pipelines, automation, and model governance infrastructure for credit risk analytics teams.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card"><div class="iqa-q">Why is SQL important in credit risk?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>SQL is the foundational tool for extracting, transforming, and analyzing large-scale portfolio and borrower data. Credit risk analysts use SQL to build EWI monitoring queries, segment portfolio performance, calculate roll rates and DPD distributions, compute vintage curves, validate model inputs, and produce KRI dashboards. Proficiency in window functions (LAG, LEAD, RANK), aggregations, and CTEs is essential for efficient portfolio analytics at scale.</p><div class="code-block small">-- Roll rate example
+SELECT customer_id,
+  dpd_current_month,
+  LAG(dpd_current_month) OVER (PARTITION BY customer_id ORDER BY month) AS dpd_prior
+FROM portfolio
+WHERE vintage = '2023-Q1';</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">Why is Snowflake useful in credit risk analytics?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Snowflake's cloud-native architecture supports scalable parallel processing of large credit datasets — enabling complex portfolio queries, vintage analysis, and EWI scoring across millions of accounts without performance degradation. Key features for credit risk: time travel (query historical portfolio states), zero-copy cloning (model development environments), native Python/Jupyter integration (for model development), and data sharing (secure bureau data access). Separation of storage and compute allows cost-efficient scaling for month-end reporting surges.</p><div class="iqa-keywords"><span>Cloud-Native</span><span>Time Travel</span><span>Parallel Processing</span><span>Bureau Data Sharing</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is ETL in risk analytics?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>ETL (Extract, Transform, Load) is the data pipeline process that prepares raw source data for reporting and modeling. Extract: pull loan-level data from origination systems, servicing platforms, bureau feeds, and payment processors. Transform: clean, standardize, compute derived features (DPD, utilization ratios, payment ratios), apply business rules. Load: write to analytical data warehouse (Snowflake, Redshift) for reporting and model scoring. ETL failures are a primary source of data quality issues in credit risk models — validation of input data is required under SR 11-7.</p><div class="iqa-keywords"><span>Pipeline</span><span>Data Cleaning</span><span>Feature Computation</span><span>Warehouse Load</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">Why is data quality important in modeling?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Poor data quality produces inaccurate model predictions and flawed business decisions — the "garbage in, garbage out" principle. In credit risk, data quality failures include: missing income verification → wrong DTI; stale bureau data → outdated PD estimates; incorrect DPD flags → wrong CECL staging; duplicate loan records → inflated EAD. Data quality controls include completeness checks (% missing), consistency checks (cross-field validation), range checks, and lineage documentation to satisfy SR 11-7 data governance requirements.</p><div class="iqa-keywords"><span>Completeness Checks</span><span>Consistency Validation</span><span>SR 11-7 Data Governance</span><span>GIGO Principle</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is feature aggregation?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Feature aggregation summarizes granular borrower behavior into predictive variables for model inputs. Examples in credit risk: average utilization over the past 6 months (smoother than single-month), maximum DPD in the last 12 months, total payment amount in last 3 months, number of months with minimum-only payment in last 6 months, payment ratio trend (improving vs deteriorating). Temporal aggregations (3m, 6m, 12m lookbacks) capture both current state and trajectory — a powerful combination for behavioral scorecard features.</p><div class="iqa-keywords"><span>Temporal Lookback</span><span>Rolling Average</span><span>Trend Features</span><span>Behavioral Signals</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">Why is automation important in risk reporting?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Automation improves consistency (same logic applied every cycle), timeliness (reports available day-after-month-end vs. week-after), scalability (handles portfolio growth without linear increase in analyst headcount), and accuracy (eliminates manual copy-paste errors). Automated KRI dashboards with threshold alerting enable proactive risk identification — teams are notified when a metric breaches amber/red limits rather than discovering it at the next committee meeting. Python/SQL pipeline automation with Airflow or dbt is the current industry standard.</p><div class="iqa-keywords"><span>Consistency</span><span>Timeliness</span><span>KRI Alerting</span><span>Airflow / dbt</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is model governance?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Model governance ensures models are properly documented, independently validated, monitored, and controlled throughout their lifecycle — as required by SR 11-7. Components: model inventory (catalog of all models with risk tier), development standards, independent validation process, approval workflow (MRM committee sign-off), use limitations (model can only be used for approved purposes), ongoing monitoring requirements, and periodic redevelopment triggers. Strong model governance protects the institution from model risk and regulatory enforcement action.</p><div class="iqa-keywords"><span>SR 11-7</span><span>Model Inventory</span><span>MRM Committee</span><span>Use Limitations</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is explainable AI in credit risk?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Explainable AI (XAI) helps interpret ML model outputs to support regulatory compliance, business transparency, and fair lending obligations. SHAP (SHapley Additive exPlanations) decomposes each model prediction into per-feature contributions — enabling generation of adverse action reason codes for denied applicants (required under ECOA/FCRA). LIME (Local Interpretable Model-agnostic Explanations) provides local approximations. XAI is now a prerequisite for deploying ML models in regulated credit decisioning at US banks.</p><div class="iqa-keywords"><span>SHAP</span><span>LIME</span><span>Adverse Action Codes</span><span>ECOA / FCRA</span></div></div></div>
+
+        </div>
+      </div>
+
+      <!-- REGULATORY & GOVERNANCE -->
+      <div class="tab-panel" id="tab-iqa-regov">
+        <p style="color:var(--slate);font-size:15px;margin-bottom:1.5rem">Fair lending, model governance, adverse action, conceptual soundness, and regulatory compliance requirements for credit risk models.</p>
+        <div class="iqa-grid">
+
+          <div class="iqa-card"><div class="iqa-q">Why is fairness important in credit models?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Credit models must avoid discriminatory outcomes to comply with ECOA and the Fair Housing Act. Disparate impact — where a facially neutral model disproportionately harms a protected class (race, sex, national origin, age) — is legally actionable even without discriminatory intent. Models must be tested for disparate impact using regression-based analysis and the four-fifths rule. Variables that serve as proxies for protected characteristics (zip code, surname, name) must be excluded or carefully justified.</p><div class="iqa-keywords"><span>Disparate Impact</span><span>ECOA</span><span>Four-Fifths Rule</span><span>Proxy Variables</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is fair lending risk?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Fair lending risk arises when lending decisions, pricing, or policies disproportionately impact protected groups under ECOA or the Fair Housing Act. Two legal theories: Disparate Treatment (intentional discrimination — treating a protected group differently) and Disparate Impact (unintentional discrimination through neutral policies with disproportionate adverse effects). The CFPB and DOJ actively supervise and enforce fair lending; enforcement actions have resulted in settlements exceeding $100M (e.g., Ally Financial auto pricing, 2013).</p><div class="iqa-keywords"><span>Disparate Treatment</span><span>Disparate Impact</span><span>CFPB Enforcement</span><span>DOJ Referral</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is model governance?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Model governance provides the framework for oversight of model development, validation, implementation, and ongoing monitoring. It defines who can build models, what standards apply, who validates them independently, what committee approves deployment, how models are monitored post-deployment, and when they must be redeveloped. Under SR 11-7, every material credit model must be in the model inventory, independently validated, and subject to periodic performance review. Governance failures are a common finding in regulatory examinations.</p><div class="iqa-keywords"><span>SR 11-7</span><span>Model Inventory</span><span>Independent Validation</span><span>Approval Workflow</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is adverse action reasoning?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Adverse action notices explain why a borrower was denied credit or received less favorable terms — required by ECOA and FCRA within 30 days. The notice must state the principal reasons (typically 4) based on model outputs. For logistic regression/WoE scorecards, reason codes map directly to the highest-scoring (most adverse) variable contributions. For ML models (XGBoost), SHAP values are used to derive reason codes. Generating legally compliant adverse action codes from complex ML models is a major challenge in model deployment.</p><div class="iqa-formula">Reason Codes = Top 4 variables by SHAP contribution<br>Must be sent within 30 days of adverse decision</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">Why is model documentation important?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Documentation supports transparency, auditability, regulatory compliance, and business continuity. SR 11-7 requires documentation covering: model purpose and intended use, data sources and data quality assessment, methodology and assumptions, performance metrics (in-sample and OOT), limitations and known weaknesses, and validation findings. Without documentation, models cannot be validated or approved for use — they become "black boxes" that regulators, auditors, and successors cannot assess. Poor documentation is the most common model risk management deficiency.</p><div class="iqa-keywords"><span>SR 11-7</span><span>Auditability</span><span>Limitations</span><span>Regulatory Compliance</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is challenger model validation?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Challenger model validation independently tests whether an alternative modeling approach outperforms the current production (champion) model. A challenger model — typically a more complex algorithm or a model retrained on recent data — is built by developers and then evaluated by an independent validation team against the champion on OOT samples. Benchmarking is a SR 11-7 requirement: validation must assess whether better alternatives exist. If the challenger consistently outperforms the champion, it becomes the basis for model redevelopment.</p><div class="iqa-keywords"><span>Champion vs Challenger</span><span>Benchmarking</span><span>OOT Comparison</span><span>Redevelopment Trigger</span></div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">Why is monitoring important after deployment?</div><div class="iqa-tag iqa-tag-basic">Foundational</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Models can degrade over time due to changing customer behavior, economic conditions, or data generating processes — a phenomenon called model drift. Post-deployment monitoring tracks PSI (population distribution shift), CSI (characteristic-level drift), Gini on rolling OOT windows, and calibration (predicted vs actual default rates). Monitoring triggers: PSI >0.2 → investigation; Gini drop >5 pts → model review; calibration ratio outside 0.8–1.2 → recalibration. Monthly monitoring is standard; quarterly reporting to MRM committee.</p><div class="iqa-formula">PSI >0.2 → Investigate | Gini drop >5pts → Review<br>Calibration ratio: predicted PD / actual PD target 0.8–1.2</div></div></div>
+
+          <div class="iqa-card"><div class="iqa-q">What is conceptual soundness?</div><div class="iqa-tag iqa-tag-intermediate">Intermediate</div><div class="iqa-answer"><div class="iqa-answer-label">Strong Answer</div><p>Conceptual soundness evaluates whether a model's design, assumptions, and methodology are theoretically justified and aligned with business objectives and credit risk theory. Under SR 11-7, it is the first pillar of model validation. A conceptually sound credit model uses appropriate outcome definitions (default defined correctly), suitable modeling technique for the problem (logistic regression for binary outcome), economically meaningful variables (no spurious correlations or data leakage), and assumptions that are reasonable and documented. A statistically powerful model that is conceptually unsound should not be approved for production use.</p><div class="iqa-keywords"><span>SR 11-7 Pillar 1</span><span>Appropriate Methodology</span><span>No Data Leakage</span><span>Economic Rationale</span></div></div></div>
+
+        </div>
+      </div>
+
     </div>
-    <div class="subsection">
-      <h3 class="subsection-title">Interview Preparation Tips</h3>
+
+    <!-- TIPS BOX -->
       <div class="card-grid-3">
         <div class="card">
           <h4>Structure Every Answer</h4>
